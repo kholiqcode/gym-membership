@@ -1,4 +1,463 @@
-info:
-  contact: {}
-paths: {}
 swagger: "2.0"
+info:
+  version: "1.0"
+  title: Gym
+  contact: {}
+host: example.com
+basePath: /
+securityDefinitions: {}
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /member:
+    get:
+      summary: Get User
+      tags:
+        - Member
+      operationId: GetUser
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: ""
+          headers: {}
+  /member/auth/register:
+    post:
+      summary: Register
+      tags:
+        - Member
+      operationId: Register
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/RegisterRequest"
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      security: []
+  /member/auth/login:
+    post:
+      summary: Login
+      tags:
+        - Member
+      operationId: Login
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/LoginRequest"
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      security: []
+  /member/auth/refresh:
+    post:
+      summary: Refresh
+      tags:
+        - Member
+      operationId: Refresh
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: ""
+          headers: {}
+  /user/1:
+    get:
+      summary: Detail
+      tags:
+        - Member
+      operationId: Detail
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      security: []
+  /admin/list:
+    get:
+      summary: Get Admin
+      tags:
+        - Admin
+      operationId: GetAdmin
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: ""
+          headers: {}
+  /admin/create:
+    post:
+      summary: Create New Admin
+      tags:
+        - Admin
+      operationId: CreateNewAdmin
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/CreateNewAdminRequest"
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      security: []
+  /admin/member-type/create:
+    post:
+      summary: Create Member Type
+      tags:
+        - Admin
+      operationId: CreateMemberType
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/CreateMemberTypeRequest"
+      responses:
+        "200":
+          description: ""
+          headers: {}
+  /admin/auth/login:
+    post:
+      summary: Login
+      tags:
+        - Admin
+      operationId: PostLogin
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/LoginRequest"
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      security: []
+  /admin/1:
+    get:
+      summary: Detail
+      tags:
+        - Admin
+      operationId: GetDetail
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      security: []
+  /admin/class/create:
+    post:
+      summary: Create Class
+      tags:
+        - Admin
+      operationId: CreateClass
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/CreateClassRequest"
+      responses:
+        "200":
+          description: ""
+          headers: {}
+  /admin/class-category/create:
+    post:
+      summary: Create Class Category
+      tags:
+        - Admin
+      operationId: CreateClassCategory
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/CreateClassCategoryRequest"
+      responses:
+        "200":
+          description: ""
+          headers: {}
+  /admin/class-category:
+    get:
+      summary: Get Class Category
+      tags:
+        - Admin
+      operationId: GetClassCategory
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: ""
+          headers: {}
+  /class:
+    get:
+      summary: Get Class
+      tags:
+        - Class
+      operationId: GetClass
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "200":
+          description: ""
+          headers: {}
+definitions:
+  RegisterRequest:
+    title: RegisterRequest
+    example:
+      name: Abdul Kholiq
+      phone: "089647583033"
+      email: kholiqdev@icloud.com
+      password: password
+    type: object
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - name
+      - phone
+      - email
+      - password
+  LoginRequest:
+    title: LoginRequest
+    example:
+      email: kholiqdev@icloud.com
+      password: password
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - email
+      - password
+  CreateNewAdminRequest:
+    title: CreateNewAdminRequest
+    example:
+      name: Admin
+      phone: "089647583033"
+      email: admin@mail.com
+      password: password
+    type: object
+    properties:
+      name:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - name
+      - phone
+      - email
+      - password
+  CreateMemberTypeRequest:
+    title: CreateMemberTypeRequest
+    example:
+      name: Free
+      description: Access Free Ccontent
+      image: ""
+      duration: 1
+      price: 100000
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      image:
+        type: string
+      duration:
+        type: integer
+        format: int32
+      price:
+        type: integer
+        format: int32
+    required:
+      - name
+      - description
+      - image
+      - duration
+      - price
+  CreateClassRequest:
+    title: CreateClassRequest
+    example:
+      class_category_id: 2
+      trainer_name: Sofyan
+      name: Class 3
+      description: Halos
+      price: 10000
+      meet_link: http://google.com
+      category: push up
+      image: http://google.com
+      date: "2022-06-18"
+      start_time: "09:30:00"
+      end_time: "11:00:00"
+      trainer_id: 3
+      is_offline: false
+    type: object
+    properties:
+      class_category_id:
+        type: integer
+        format: int32
+      trainer_name:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      price:
+        type: integer
+        format: int32
+      meet_link:
+        type: string
+      category:
+        type: string
+      image:
+        type: string
+      date:
+        type: string
+      start_time:
+        type: string
+      end_time:
+        type: string
+      trainer_id:
+        type: integer
+        format: int32
+      is_offline:
+        type: boolean
+    required:
+      - class_category_id
+      - trainer_name
+      - name
+      - description
+      - price
+      - meet_link
+      - category
+      - image
+      - date
+      - start_time
+      - end_time
+      - trainer_id
+      - is_offline
+  CreateClassCategoryRequest:
+    title: CreateClassCategoryRequest
+    example:
+      name: push down
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
+security:
+  - bearer: []
+tags:
+  - name: Member
+  - name: Admin
+  - name: Class
