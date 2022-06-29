@@ -1,667 +1,4030 @@
 {
-    "swagger": "2.0",
-    "info": {
-      "version": "1.0",
-      "title": "Gym",
-      "contact": {}
-    },
-    "host": "example.com",
-    "basePath": "/",
-    "securityDefinitions": {},
-    "schemes": [
-      "http"
-    ],
-    "consumes": [
-      "application/json"
-    ],
-    "produces": [
-      "application/json"
-    ],
-    "paths": {
-      "/member": {
-        "get": {
-          "summary": "Get User",
-          "tags": [
-            "Member"
-          ],
-          "operationId": "GetUser",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": false,
-              "default": "Bearer {token}",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Gym",
+    "contact": {}
+  },
+  "host": "gym.stack.co.id",
+  "basePath": "/",
+  "securityDefinitions": {},
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/member": {
+      "get": {
+        "summary": "Get User",
+        "tags": [
+          "Member"
+        ],
+        "operationId": "GetUser",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
           }
-        }
-      },
-      "/member/auth/register": {
-        "post": {
-          "summary": "Register",
-          "tags": [
-            "Member"
-          ],
-          "operationId": "Register",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Body",
-              "in": "body",
-              "required": true,
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/RegisterRequest"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          },
-          "security": []
-        }
-      },
-      "/member/auth/login": {
-        "post": {
-          "summary": "Login",
-          "tags": [
-            "Member"
-          ],
-          "operationId": "Login",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Body",
-              "in": "body",
-              "required": true,
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/LoginRequest"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          },
-          "security": []
-        }
-      },
-      "/member/auth/refresh": {
-        "post": {
-          "summary": "Refresh",
-          "tags": [
-            "Member"
-          ],
-          "operationId": "Refresh",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": false,
-              "default": "Bearer {token}",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          }
-        }
-      },
-      "/user/1": {
-        "get": {
-          "summary": "Detail",
-          "tags": [
-            "Member"
-          ],
-          "operationId": "Detail",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          },
-          "security": []
-        }
-      },
-      "/admin/list": {
-        "get": {
-          "summary": "Get Admin",
-          "tags": [
-            "Admin"
-          ],
-          "operationId": "GetAdmin",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": false,
-              "default": "Bearer {token}",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          }
-        }
-      },
-      "/admin/create": {
-        "post": {
-          "summary": "Create New Admin",
-          "tags": [
-            "Admin"
-          ],
-          "operationId": "CreateNewAdmin",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Body",
-              "in": "body",
-              "required": true,
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/CreateNewAdminRequest"
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          },
-          "security": []
-        }
-      },
-      "/admin/member-type/create": {
-        "post": {
-          "summary": "Create Member Type",
-          "tags": [
-            "Admin"
-          ],
-          "operationId": "CreateMemberType",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": false,
-              "default": "Bearer {token}",
-              "type": "string"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetUser2"
             },
-            {
-              "name": "Body",
-              "in": "body",
-              "required": true,
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/CreateMemberTypeRequest"
+            "examples": {
+              "application/json": {
+                "code": 200,
+                "message": "Success",
+                "result": {
+                  "members": [
+                    {
+                      "id": 1,
+                      "name": "Abdul Kholiq",
+                      "email": "kholiqdev@icloud.com",
+                      "created_at": "2022-06-12T20:25:38.000Z",
+                      "updated_at": "2022-06-12T20:25:38.000Z"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Abdul Kholiq",
+                      "email": "kholiqdev12@icloud.com",
+                      "created_at": "2022-06-15T12:12:52.000Z",
+                      "updated_at": "2022-06-15T12:12:52.000Z"
+                    },
+                    {
+                      "id": 5,
+                      "name": "Maharani",
+                      "email": "rani@gmail.com",
+                      "created_at": "2022-06-29T16:52:09.000Z",
+                      "updated_at": "2022-06-29T16:52:09.000Z"
+                    }
+                  ]
+                }
               }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          }
-        }
-      },
-      "/admin/auth/login": {
-        "post": {
-          "summary": "Login",
-          "tags": [
-            "Admin"
-          ],
-          "operationId": "PostLogin",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Body",
-              "in": "body",
-              "required": true,
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/LoginRequest"
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:54:28 GMT"
+              },
+              "Transfer-Encoding": {
+                "type": "string",
+                "default": "chunked"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=ZwLuDngPhmTouHwcZ6iuwUwJeCiAl%2Bi6L1vk%2FtMy1O%2FjRdri9CYmb3%2Fpmo9C3ryj1rdS%2F0BxXVRz2XA8HmLMN3tVKf6Iel4iDGrUgsqnVa5YMzJ7QUzSoDdaV60YFo1qP64%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "72302f2d1e3791bf-SIN"
+              },
+              "Content-Encoding": {
+                "type": "string",
+                "default": "br"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
               }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
             }
           },
-          "security": []
-        }
-      },
-      "/admin/1": {
-        "get": {
-          "summary": "Detail",
-          "tags": [
-            "Admin"
-          ],
-          "operationId": "GetDetail",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          },
-          "security": []
-        }
-      },
-      "/admin/class/create": {
-        "post": {
-          "summary": "Create Class",
-          "tags": [
-            "Admin"
-          ],
-          "operationId": "CreateClass",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": false,
-              "default": "Bearer {token}",
-              "type": "string"
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/GetUser1"
             },
-            {
-              "name": "Body",
-              "in": "body",
-              "required": true,
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/CreateClassRequest"
+            "examples": {
+              "application/json": {
+                "code": 401,
+                "message": "token expired",
+                "result": null
               }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          }
-        }
-      },
-      "/admin/class-category/create": {
-        "post": {
-          "summary": "Create Class Category",
-          "tags": [
-            "Admin"
-          ],
-          "operationId": "CreateClassCategory",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": false,
-              "default": "Bearer {token}",
-              "type": "string"
             },
-            {
-              "name": "Body",
-              "in": "body",
-              "required": true,
-              "description": "",
-              "schema": {
-                "$ref": "#/definitions/CreateClassCategoryRequest"
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:48:00 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "53"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=QU2eVuhAeIkf4f0%2FZjdqLNmqg1UHLz56pyJe9crlJ7jcrVfPTyMjhLut5hhneSa4CtlYByqMOif1BcW0wlbBkpHydNckkmtnSWGJgmVXQqXx0n5rKAUhdGoqBJxzOkqnbSc%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723025b02e0d91bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
               }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          }
-        }
-      },
-      "/admin/class-category": {
-        "get": {
-          "summary": "Get Class Category",
-          "tags": [
-            "Admin"
-          ],
-          "operationId": "GetClassCategory",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": false,
-              "default": "Bearer {token}",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
-            }
-          }
-        }
-      },
-      "/class": {
-        "get": {
-          "summary": "Get Class",
-          "tags": [
-            "Class"
-          ],
-          "operationId": "GetClass",
-          "deprecated": false,
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "name": "Authorization",
-              "in": "header",
-              "required": false,
-              "default": "Bearer {token}",
-              "type": "string"
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "",
-              "headers": {}
             }
           }
         }
       }
     },
-    "definitions": {
-      "RegisterRequest": {
-        "title": "RegisterRequest",
-        "example": {
-          "name": "Abdul Kholiq",
-          "phone": "089647583033",
-          "email": "kholiqdev@icloud.com",
-          "password": "password"
-        },
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
+    "/member/auth/register": {
+      "post": {
+        "summary": "Register",
+        "tags": [
+          "Member"
+        ],
+        "operationId": "Register",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RegisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Register2"
+            },
+            "examples": {
+              "application/json": {
+                "code": 201,
+                "message": "Success",
+                "result": {
+                  "id": 5,
+                  "name": "Maharani",
+                  "email": "rani@gmail.com",
+                  "created_at": "2022-06-29T16:52:08.543Z",
+                  "updated_at": "2022-06-29T16:52:08.543Z"
+                }
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:52:08 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "174"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=Oi0ef2EOPghmBt05KuFNntAq0OubEYqot%2BeyqDxcKQEro4KTmjvvnT8gMMpWIgK0NL2RQxlGx2cbYOdpbxhek%2BRFdSM%2FcbXJ1vwNBFLpUhUiNT7y2Svqm7CcFnVPPaL%2FhVQ%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "72302bbf6e8691bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
           },
-          "phone": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Register1"
+            },
+            "examples": {
+              "application/json": {
+                "code": 400,
+                "message": "Error 1062: Duplicate entry 'kholiqdev@icloud.com' for key 'members.email'",
+                "result": null
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:48:50 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "114"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=DcCICk5j05dDHlfBJBs6ijeMxsJW2FlsC%2B6Ol30kBjhcH2ITpElHAtTwt2S0ikMxEiHlFjeXTFLwMojV7gnrT2%2FH64ywLpHB1SVChqR7SYFBlTYuVlJF%2FwFWeUNp3etCRnU%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723026ec3d7991bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
           }
         },
-        "required": [
-          "name",
-          "phone",
-          "email",
-          "password"
-        ]
-      },
-      "LoginRequest": {
-        "title": "LoginRequest",
-        "example": {
-          "email": "kholiqdev@icloud.com",
-          "password": "password"
-        },
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
+        "security": []
+      }
+    },
+    "/member/auth/login": {
+      "post": {
+        "summary": "Login",
+        "tags": [
+          "Member"
+        ],
+        "operationId": "Login",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            },
+            "examples": {
+              "application/json": {
+                "code": 200,
+                "message": "Success",
+                "result": {
+                  "type": "Bearer",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6ImFjY2Vzc190b2tlbiJ9.x1GKs3VvxfdOeTOHJRsHYU-aQDOpG7JfUcZkLvAMO3E",
+                  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4ifQ.1yhQIErbmzZSnjLuNTZ0KC1kBZ3ay-TShwmd7sXpeCQ"
+                }
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:49:12 GMT"
+              },
+              "Transfer-Encoding": {
+                "type": "string",
+                "default": "chunked"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=%2BTIST0kFpLvf43wEMHzWPfK9D3vBiCP%2BgMpkV%2Bz%2FfAVrFAl9bwb0CphFXq8l8lWCt2X1dca%2FPHiyVXT94%2Fi2FzzpcEu9vhAmqFqWrZNDgnUhfQAWGpqiSpzhaqaKJPUkizM%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723027764bd791bf-SIN"
+              },
+              "Content-Encoding": {
+                "type": "string",
+                "default": "br"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
           },
-          "password": {
-            "type": "string"
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Login2"
+            },
+            "examples": {
+              "application/json": {
+                "code": 401,
+                "message": "record not found",
+                "result": null
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:53:41 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "56"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=w3wosOIgILZfs3zPMMsIV4LGYY4jm8TRzg8lvb4Ir4awOV6bTx7LDNcF5YiSlTUK6K8UExt6Og3AYu1q7QVTI%2FTUjkr%2BAfM0g%2FEU046208k%2BWw0fg7VUKyeJohjZX3qU%2FQs%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "72302e011c6991bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
           }
         },
-        "required": [
-          "email",
-          "password"
-        ]
-      },
-      "CreateNewAdminRequest": {
-        "title": "CreateNewAdminRequest",
-        "example": {
-          "name": "Admin",
-          "phone": "089647583033",
-          "email": "admin@mail.com",
-          "password": "password"
-        },
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "password": {
+        "security": []
+      }
+    },
+    "/member/auth/refresh": {
+      "post": {
+        "summary": "Refresh",
+        "tags": [
+          "Member"
+        ],
+        "operationId": "Refresh",
+        "deprecated": false,
+        "produces": [
+          "application/json",
+          "application/json; charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
             "type": "string"
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Refresh"
+            },
+            "examples": {
+              "application/json": {
+                "code": 200,
+                "message": "Success",
+                "result": {
+                  "type": "Bearer",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg5NTMsImlhdCI6MTY1NjUyMTc1MywiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6ImFjY2Vzc190b2tlbiJ9.j_TTm4xG_RJZBWhEEDcPz-LwXgN2kRQyX6G3YKffxnI",
+                  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg5NTMsImlhdCI6MTY1NjUyMTc1MywiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4ifQ.PSrOY7sjIz3VWpNg9mrfzcylq416I43wB85YVsTLlIA"
+                }
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:55:53 GMT"
+              },
+              "Transfer-Encoding": {
+                "type": "string",
+                "default": "chunked"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=nFswY4W31F2tcxZArzWSlVXh8NmrddGc0SbvI2qgld9wqM8L8BWde0ensUJ8W4GKBLVc%2BUdPDfo5fFJCxJRhk8BVqM8G0UvzbAgYNEA8bGEgdG5xK7FPlX8vHeJ09H%2B%2FNGA%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "7230313f9ed691bf-SIN"
+              },
+              "Content-Encoding": {
+                "type": "string",
+                "default": "br"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Refresh2"
+            },
+            "examples": {
+              "application/json; charset=UTF-8": {
+                "message": "invalid or expired jwt"
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:56:13 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "37"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=P40pBEq4dc7%2FqxM9MuKiEbqQLI63vF4oBmK18AYBZ%2FgtQJiO%2F%2BqnxJ8SfJcum2Yjs0tR7Tuis3giRYuO6C2w1yGbI6ItmFSvHUP0RUB6YkS59ERrI5zbQf5MDjWOHNHNHwI%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723031b90a5f91bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/5": {
+      "get": {
+        "summary": "Detail",
+        "tags": [
+          "Member"
+        ],
+        "operationId": "Detail",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=UTF-8"
+        ],
+        "parameters": [],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/Detail1"
+            },
+            "examples": {
+              "application/json; charset=UTF-8": {
+                "message": "Not Found"
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:57:36 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "24"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=hkpV%2FJK4pEVOD4WHG2XpiEDL4ERW6PMMZ%2Fr3uyW68WhxPuFeOayER2uD%2F7DmjcbKstfjD%2BXi3CbPKMv%2BwmQmcaIbHVbrKKO8vXyzRxeCsqXptciZ2h7K3LNFMqUoMP1lk48%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723033c29ae091bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
         },
-        "required": [
-          "name",
-          "phone",
-          "email",
-          "password"
+        "security": []
+      }
+    },
+    "/member/join": {
+      "post": {
+        "summary": "Join",
+        "tags": [
+          "Member"
+        ],
+        "operationId": "Join",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/JoinRequest"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Method Not Allowed",
+            "schema": {
+              "$ref": "#/definitions/Join1"
+            },
+            "examples": {
+              "application/json; charset=UTF-8": {
+                "message": "Method Not Allowed"
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 16:58:36 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "33"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Allow": {
+                "type": "string",
+                "default": "OPTIONS, GET"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=MqbbmtnFiFYdiqkO7Qt0FJhs0F%2B75YCTHbDEqq5EuFaqTLKgKRKK2xCHlgXUVQAj%2BSS3cktHNTJ6lFoy9s8UP2abfeyyHfSZeQ%2FpuEZUNefQVI1qpO9GevTSYmHHrnzY5Zc%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "72303539ab1791bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/list": {
+      "get": {
+        "summary": "Get Admin",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "GetAdmin",
+        "deprecated": false,
+        "produces": [
+          "application/json",
+          "application/json; charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetAdmin"
+            },
+            "examples": {
+              "application/json": {
+                "code": 200,
+                "message": "Success",
+                "result": {
+                  "admins": [
+                    {
+                      "id": 1,
+                      "name": "Admin",
+                      "phone": "089647583033",
+                      "email": "admin@mail.com",
+                      "created_at": "2022-06-12T20:14:28.000Z",
+                      "updated_at": "2022-06-12T20:14:28.000Z"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Admin",
+                      "phone": "089647583033",
+                      "email": "admin12@mail.com",
+                      "created_at": "2022-06-15T12:13:52.000Z",
+                      "updated_at": "2022-06-15T12:13:52.000Z"
+                    }
+                  ]
+                }
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:07:17 GMT"
+              },
+              "Transfer-Encoding": {
+                "type": "string",
+                "default": "chunked"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=qfNpwfcgqQkPVBl4%2BxM6%2FqB8jr9QV4Fd0DPTOkqze3Jc75z4Su3ac%2Fql6S%2BuIuLnyYCEomNJFggRnJzIkyuzgKsdbmrmMZKQdpxT3U0UNhpIpmrKoe0Clim91HUy3rDfywE%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723041f35b9091bf-SIN"
+              },
+              "Content-Encoding": {
+                "type": "string",
+                "default": "br"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/GetAdmin2"
+            },
+            "examples": {
+              "application/json; charset=UTF-8": {
+                "message": "missing or malformed jwt"
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:08:41 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "39"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=9DLNGEkMXjnN0T9DqJ5yePGP%2B5NDWcq7qe2lpaHZy5RGAPmBtrPjiKnG2saAU%2FaMIy8S%2F5%2BJYFeBApIkbUovdjeuHewvoX87fzDgPxbH74uWM4OB0QO2oyTim0HHMdPPLNk%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723043febce991bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/GetAdmin2"
+            },
+            "examples": {
+              "application/json; charset=UTF-8": {
+                "message": "invalid or expired jwt"
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:08:12 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "37"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=WGepc%2Bj2HNUUydcXgiJqMv1jCAbLXarhPgD0FZr0%2BfWslo6yTPqMpj97Vw1H78I0TKS0I6NskyLXJzBKTLLOWBlPkzd2zDO6fIAgQLvPVQosPuBXznuD0PkMAIPZM3qsdmk%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "7230434b298d91bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/member-type/create": {
+      "post": {
+        "summary": "Create Member Type",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "CreateMemberType",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CreateMemberTypeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/CreateMemberType2"
+            },
+            "examples": {
+              "application/json": {
+                "code": 201,
+                "message": "Success",
+                "result": {
+                  "id": 2,
+                  "name": "Free",
+                  "description": "Access Free Ccontent",
+                  "price": 100000,
+                  "created_at": "2022-06-29T17:01:51.012Z",
+                  "updated_at": "2022-06-29T17:01:51.012Z"
+                }
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:01:51 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "197"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=BE7mJ1R2R78ceeKiXfzF7ODWWtqza2F8Ye4eBYhqpvrJCgtrOa2HjArGo%2BvuWdfwq7sWkqN%2BmS3ratfgEjU2%2FzWBvVmnwlxxH%2BKcBVtGlPAIKog%2Bycr6uEg9GfTDOS2Zj2w%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723039f90f5291bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/CreateMemberType1"
+            },
+            "examples": {
+              "application/json": {
+                "code": 401,
+                "message": "token expired",
+                "result": null
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:00:24 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "53"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=RCr2EGp9Gz7ejjAyDFitfFfsrgciDKIXIvVg8t4zENxPFL13aJc5I29Sd7HwIfvBQxySeS3UnF47DzYO6lWDwnwc406dIKYrr3UJrZE2rcZHlyAqi4yIORlgHbwL6wr8uZ0%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723037da1ca891bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/auth/login": {
+      "post": {
+        "summary": "Login",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "PostLogin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/LoginRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            },
+            "examples": {
+              "application/json": {
+                "code": 200,
+                "message": "Success",
+                "result": {
+                  "type": "Bearer",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1MjkyNDgsImlhdCI6MTY1NjUyMjA0OCwiaWQiOjEsIm5hbWUiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.9r8nNMpnqgX7huhj7sW_MZieEBVPECHFDOfPwCMMPS0",
+                  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1MjkyNDgsImlhdCI6MTY1NjUyMjA0OCwiaWQiOjEsIm5hbWUiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsInRva2VuX3R5cGUiOiJyZWZyZXNoX3Rva2VuIn0.qbA1oRZVYQ9WMGXTISjNmuzGzBRUhYodWSUTE2OICZI"
+                }
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:00:48 GMT"
+              },
+              "Transfer-Encoding": {
+                "type": "string",
+                "default": "chunked"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=2k34xbGXl0jGFesQgtn3Pv7VStTgvdFL5PpKkfreCTpGDpiqqR1wpKOYxFEwoeIAFZ1uMXowQT4OFyKfeSeh3BOgJqxMd6SlabyOVMF%2BJeZTlfkt3p8viC5sr1aXqk5AF8U%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723038730c0d91bf-SIN"
+              },
+              "Content-Encoding": {
+                "type": "string",
+                "default": "br"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/Login2"
+            },
+            "examples": {
+              "application/json": {
+                "code": 401,
+                "message": "record not found",
+                "result": null
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:02:35 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "56"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=yJ9e4XzSYpedbI8MBx7W0H2HjNsvV4LYeS4IMlaLeNpK20dQvxBwVe0%2FuzI7ZuLS16OvEphRgxl%2BAs90u6C8r4%2B3baK0dX9MJSUEKC80yoyWhCRzon7t2wpJmhiaFrsasd8%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "72303b0bcd3b91bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/admin/1": {
+      "get": {
+        "summary": "Detail",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "GetDetail",
+        "deprecated": false,
+        "produces": [
+          "application/json; charset=UTF-8"
+        ],
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/Detail1"
+            },
+            "examples": {
+              "application/json; charset=UTF-8": {
+                "message": "missing or malformed jwt"
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:03:54 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "39"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=%2FkjLeBNrZINLA9%2FhuiF0n%2BKn9amAlMjh%2FvLZo%2BCImbw2ojs1OMdBJp4nY%2F3VvmAJot0wSzVM5R5tx8iCVkQTMcN5IjmixI6jHfY3QG%2FwG6PRFn9iVjhkXLxOlwt%2FtjpoqJY%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "72303cf889bc91bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/admin/class/create": {
+      "post": {
+        "summary": "Create Class",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "CreateClass",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CreateClassRequest"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/CreateClass1"
+            },
+            "examples": {
+              "application/json": {
+                "code": 400,
+                "message": "Error 1452: Cannot add or update a child row: a foreign key constraint fails (`gym`.`classes`, CONSTRAINT `fk_classes_class_category` FOREIGN KEY (`class_category_id`) REFERENCES `class_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)",
+                "result": null
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:05:17 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "281"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=%2FyXv7MaXkRDrrlar49Ntmv3CGXjEYGtVOcJL6lRGG8qNaVSI9vHCYjXdAH%2BJEx8IDRWAgsrfRrdX%2BVxbjrOo%2BFWCSneDluufz0RNHwwiyHPIpymw8V9Mz5V4X7qS%2FjW8lUY%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "72303f034dac91bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/CreateClass1"
+            },
+            "examples": {
+              "application/json": {
+                "code": 401,
+                "message": "token expired",
+                "result": null
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:04:33 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "53"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=18tqbItxJO%2FPttS03jlgpo6ONHDXbw0dMtmt81qwzEgAUPjKQ1zcgdFwBShtfWgmoTIIz5cNmxjcti8oaz%2FXBNmU4FkA2c%2Bf1p7kxIl0e7wvP740O%2FpODiPnwpdADS5t%2BlU%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "72303df23aa691bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/class-category/create": {
+      "post": {
+        "summary": "Create Class Category",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "CreateClassCategory",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CreateClassCategoryRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/CreateClassCategory2"
+            },
+            "examples": {
+              "application/json": {
+                "code": 201,
+                "message": "Success",
+                "result": {
+                  "id": 1,
+                  "name": "push down",
+                  "slug": "push-down"
+                }
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:10:20 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "89"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=sEK1Pa06kD%2BVI6tKBl3wFAO8p%2B%2Bk%2FsgkUjVWNZ6eZzdNTM8fl2bx3fxcNz5EAodVpAn%2BgEsKUkf3CPs1x5fbuJMTcdSEquEu5yF0H6Pi7pVa7sWWeTP2Dj%2FhDhkNrJ3K2nY%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "7230466a688891bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/CreateClassCategory1"
+            },
+            "examples": {
+              "application/json": {
+                "code": 401,
+                "message": "token expired",
+                "result": null
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:09:42 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "53"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=WwocxvABybLmI9IIlruL8AWNmDEA973XnncvypwAlJfAmpFsQnCo2Wpx0mDsG70jIPDpmLovZ7h6Gy2yz5La91VaL1W%2FCh9cHtVvQzykxo5IxaxHJGSbisFrfygs1XiY%2Bbw%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "7230457db92091bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/create": {
+      "post": {
+        "summary": "Create New Admin",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "CreateNewAdmin",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CreateNewAdminRequest"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/CreateNewAdmin"
+            },
+            "examples": {
+              "application/json": {
+                "code": 201,
+                "message": "Success",
+                "result": {
+                  "id": 3,
+                  "name": "Admin2",
+                  "phone": "0896287363",
+                  "email": "admin2@mail.com",
+                  "created_at": "2022-06-29T17:11:26.185Z",
+                  "updated_at": "2022-06-29T17:11:26.185Z"
+                }
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:11:26 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "194"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=5Gt%2BxwvxRM8I1KWzM7L%2FM8oXu%2BXL1xa3dbRA6lnkF4I1FAcJalbaPqeW9gd%2BRVc7oXGEjundCQPrtUyo%2FSHe5gKMiPYDO8HW1BLQhoNH%2F25gpO6Nz3AXF%2FXzHckvNtQmcH8%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723048022d3891bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/admin/class-category": {
+      "get": {
+        "summary": "Get Class Category",
+        "tags": [
+          "Admin"
+        ],
+        "operationId": "GetClassCategory",
+        "deprecated": false,
+        "produces": [
+          "application/json",
+          "application/json; charset=UTF-8"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/GetClassCategory2"
+            },
+            "examples": {
+              "application/json": {
+                "code": 200,
+                "message": "Success",
+                "result": {
+                  "class_category": {
+                    "data": [
+                      {
+                        "id": 1,
+                        "name": "push down",
+                        "slug": "push-down"
+                      }
+                    ],
+                    "page": 1,
+                    "page_size": 10,
+                    "sort": "Id desc",
+                    "total_page": 1,
+                    "total_rows": 1
+                  }
+                }
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:12:40 GMT"
+              },
+              "Transfer-Encoding": {
+                "type": "string",
+                "default": "chunked"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=HLtJW9v0t2wXWl1TRGvchakcmv3HFBaqxd9uxKyzqxiSjzn4L2FGfHfgAa0PhtZxZjylwH8l3VDOY1AOIGPUH5NZ7IpPCAZPXj8v9Hw4vcTqYIDKhCI7TcUcqJJEoHpsspQ%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723049d6295091bf-SIN"
+              },
+              "Content-Encoding": {
+                "type": "string",
+                "default": "br"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/GetClassCategory1"
+            },
+            "examples": {
+              "application/json": {
+                "code": 401,
+                "message": "token expired",
+                "result": null
+              },
+              "application/json; charset=UTF-8": {
+                "message": "invalid or expired jwt"
+              }
+            },
+            "headers": {
+              "Date": {
+                "type": "string",
+                "default": "Wed, 29 Jun 2022 17:12:09 GMT"
+              },
+              "Content-Length": {
+                "type": "string",
+                "default": "53"
+              },
+              "Connection": {
+                "type": "string",
+                "default": "keep-alive"
+              },
+              "Vary": {
+                "type": "string",
+                "default": "Origin"
+              },
+              "CF-Cache-Status": {
+                "type": "string",
+                "default": "DYNAMIC"
+              },
+              "Expect-CT": {
+                "type": "string",
+                "default": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+              },
+              "Report-To": {
+                "type": "string",
+                "default": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=J6QUaqU%2FKd9R7pawu6XxeGeGoDjO%2F9ETGKFHQ%2FE75HlHrsfKe1oU3iEqOwSL7Hm5lWWu8KpeYCi%2BqCF5fu0JcC1FJRMgtnx6%2FyH4BxEVIsAU%2F5B8h8upYBk9GlGEH3F3BlI%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "NEL": {
+                "type": "string",
+                "default": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+              },
+              "Server": {
+                "type": "string",
+                "default": "cloudflare"
+              },
+              "CF-RAY": {
+                "type": "string",
+                "default": "723049101d5c91bf-SIN"
+              },
+              "alt-svc": {
+                "type": "string",
+                "default": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/class": {
+      "get": {
+        "summary": "Get Class",
+        "tags": [
+          "Class"
+        ],
+        "operationId": "GetClass",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/class/1": {
+      "get": {
+        "summary": "get clas by id",
+        "tags": [
+          "Class"
+        ],
+        "operationId": "getclasbyid",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "upadate class",
+        "tags": [
+          "Class"
+        ],
+        "operationId": "upadateclass",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/upadateclassrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete class",
+        "tags": [
+          "Class"
+        ],
+        "operationId": "deleteclass",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/trainer": {
+      "post": {
+        "summary": "add trainer",
+        "tags": [
+          "Trainer"
+        ],
+        "operationId": "addtrainer",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/addtrainerrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "get": {
+        "summary": "get all trainer",
+        "tags": [
+          "Trainer"
+        ],
+        "operationId": "getalltrainer",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/trainer/1": {
+      "get": {
+        "summary": "get trainer by id",
+        "tags": [
+          "Trainer"
+        ],
+        "operationId": "gettrainerbyid",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "update trainer",
+        "tags": [
+          "Trainer"
+        ],
+        "operationId": "updatetrainer",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/updatetrainerrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete trainer",
+        "tags": [
+          "Trainer"
+        ],
+        "operationId": "deletetrainer",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/transaction": {
+      "post": {
+        "summary": "add transaction",
+        "tags": [
+          "Transaction"
+        ],
+        "operationId": "addtransaction",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/addtransactionrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "get": {
+        "summary": "get all transaction",
+        "tags": [
+          "Transaction"
+        ],
+        "operationId": "getalltransaction",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/transaction/1": {
+      "get": {
+        "summary": "get transaction by id",
+        "tags": [
+          "Transaction"
+        ],
+        "operationId": "gettransactionbyid",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "update transaction status",
+        "tags": [
+          "Transaction"
+        ],
+        "operationId": "updatetransactionstatus",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete transaction",
+        "tags": [
+          "Transaction"
+        ],
+        "operationId": "deletetransaction",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/payment/method": {
+      "post": {
+        "summary": "add payment method",
+        "tags": [
+          "Payment Methode"
+        ],
+        "operationId": "addpaymentmethod",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/addpaymentmethodrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "get": {
+        "summary": "get all payment methode",
+        "tags": [
+          "Payment Methode"
+        ],
+        "operationId": "getallpaymentmethode",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/payment/method/1": {
+      "get": {
+        "summary": "get payment methode by id",
+        "tags": [
+          "Payment Methode"
+        ],
+        "operationId": "getpaymentmethodebyid",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "upadate payment method",
+        "tags": [
+          "Payment Methode"
+        ],
+        "operationId": "upadatepaymentmethod",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete payment method",
+        "tags": [
+          "Payment Methode"
+        ],
+        "operationId": "deletepaymentmethod",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GetUser1": {
+      "title": "GetUser1",
+      "example": {
+        "code": 401,
+        "message": "token expired",
+        "result": null
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "GetUser2": {
+      "title": "GetUser2",
+      "example": {
+        "code": 200,
+        "message": "Success",
+        "result": {
+          "members": [
+            {
+              "id": 1,
+              "name": "Abdul Kholiq",
+              "email": "kholiqdev@icloud.com",
+              "created_at": "2022-06-12T20:25:38.000Z",
+              "updated_at": "2022-06-12T20:25:38.000Z"
+            }
+          ]
+        }
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/Result"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Result": {
+      "title": "Result",
+      "example": {
+        "members": [
+          {
+            "id": 1,
+            "name": "Abdul Kholiq",
+            "email": "kholiqdev@icloud.com",
+            "created_at": "2022-06-12T20:25:38.000Z",
+            "updated_at": "2022-06-12T20:25:38.000Z"
+          }
         ]
       },
-      "CreateMemberTypeRequest": {
-        "title": "CreateMemberTypeRequest",
-        "example": {
+      "type": "object",
+      "properties": {
+        "members": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Member"
+          }
+        }
+      },
+      "required": [
+        "members"
+      ]
+    },
+    "Member": {
+      "title": "Member",
+      "example": {
+        "id": 1,
+        "name": "Abdul Kholiq",
+        "email": "kholiqdev@icloud.com",
+        "created_at": "2022-06-12T20:25:38.000Z",
+        "updated_at": "2022-06-12T20:25:38.000Z"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "RegisterRequest": {
+      "title": "RegisterRequest",
+      "example": {
+        "name": "Maharani",
+        "phone": "08781928349",
+        "email": "rani@gmail.com",
+        "password": "password123"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "phone",
+        "email",
+        "password"
+      ]
+    },
+    "Register1": {
+      "title": "Register1",
+      "example": {
+        "code": 400,
+        "message": "Error 1062: Duplicate entry 'kholiqdev@icloud.com' for key 'members.email'",
+        "result": null
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Register2": {
+      "title": "Register2",
+      "example": {
+        "code": 201,
+        "message": "Success",
+        "result": {
+          "id": 5,
+          "name": "Maharani",
+          "email": "rani@gmail.com",
+          "created_at": "2022-06-29T16:52:08.543Z",
+          "updated_at": "2022-06-29T16:52:08.543Z"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/Result1"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Result1": {
+      "title": "Result1",
+      "example": {
+        "id": 5,
+        "name": "Maharani",
+        "email": "rani@gmail.com",
+        "created_at": "2022-06-29T16:52:08.543Z",
+        "updated_at": "2022-06-29T16:52:08.543Z"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "LoginRequest": {
+      "title": "LoginRequest",
+      "example": {
+        "email": "rani2@gmail.com",
+        "password": "password"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "Login": {
+      "title": "Login",
+      "example": {
+        "code": 200,
+        "message": "Success",
+        "result": {
+          "type": "Bearer",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6ImFjY2Vzc190b2tlbiJ9.x1GKs3VvxfdOeTOHJRsHYU-aQDOpG7JfUcZkLvAMO3E",
+          "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4ifQ.1yhQIErbmzZSnjLuNTZ0KC1kBZ3ay-TShwmd7sXpeCQ"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/Result2"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Result2": {
+      "title": "Result2",
+      "example": {
+        "type": "Bearer",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6ImFjY2Vzc190b2tlbiJ9.x1GKs3VvxfdOeTOHJRsHYU-aQDOpG7JfUcZkLvAMO3E",
+        "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4ifQ.1yhQIErbmzZSnjLuNTZ0KC1kBZ3ay-TShwmd7sXpeCQ"
+      },
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "refresh_token": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "token",
+        "refresh_token"
+      ]
+    },
+    "Login2": {
+      "title": "Login2",
+      "example": {
+        "code": 401,
+        "message": "record not found",
+        "result": null
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Refresh": {
+      "title": "Refresh",
+      "example": {
+        "code": 200,
+        "message": "Success",
+        "result": {
+          "type": "Bearer",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg5NTMsImlhdCI6MTY1NjUyMTc1MywiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6ImFjY2Vzc190b2tlbiJ9.j_TTm4xG_RJZBWhEEDcPz-LwXgN2kRQyX6G3YKffxnI",
+          "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg5NTMsImlhdCI6MTY1NjUyMTc1MywiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4ifQ.PSrOY7sjIz3VWpNg9mrfzcylq416I43wB85YVsTLlIA"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/Result2"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Refresh2": {
+      "title": "Refresh2",
+      "example": {
+        "message": "invalid or expired jwt"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "Detail1": {
+      "title": "Detail1",
+      "example": {
+        "message": "Not Found"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "JoinRequest": {
+      "title": "JoinRequest",
+      "example": {
+        "member_type_id": 1,
+        "start_at": "2022-06-18T00:00:00.000Z",
+        "nik": "350919191806999003",
+        "name": "Abdul Kholiq",
+        "gender": "L",
+        "address": "jln ahmad yani 6 jember",
+        "city": "jember",
+        "postal_code": "680137",
+        "email": "kholiqdev@icloud.com",
+        "phone": "0896475830303"
+      },
+      "type": "object",
+      "properties": {
+        "member_type_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "start_at": {
+          "type": "string"
+        },
+        "nik": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "member_type_id",
+        "start_at",
+        "nik",
+        "name",
+        "gender",
+        "address",
+        "city",
+        "postal_code",
+        "email",
+        "phone"
+      ]
+    },
+    "Join1": {
+      "title": "Join1",
+      "example": {
+        "message": "Method Not Allowed"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "GetAdmin": {
+      "title": "GetAdmin",
+      "example": {
+        "code": 200,
+        "message": "Success",
+        "result": {
+          "admins": [
+            {
+              "id": 1,
+              "name": "Admin",
+              "phone": "089647583033",
+              "email": "admin@mail.com",
+              "created_at": "2022-06-12T20:14:28.000Z",
+              "updated_at": "2022-06-12T20:14:28.000Z"
+            }
+          ]
+        }
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/Result4"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Result4": {
+      "title": "Result4",
+      "example": {
+        "admins": [
+          {
+            "id": 1,
+            "name": "Admin",
+            "phone": "089647583033",
+            "email": "admin@mail.com",
+            "created_at": "2022-06-12T20:14:28.000Z",
+            "updated_at": "2022-06-12T20:14:28.000Z"
+          }
+        ]
+      },
+      "type": "object",
+      "properties": {
+        "admins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Admin"
+          }
+        }
+      },
+      "required": [
+        "admins"
+      ]
+    },
+    "Admin": {
+      "title": "Admin",
+      "example": {
+        "id": 1,
+        "name": "Admin",
+        "phone": "089647583033",
+        "email": "admin@mail.com",
+        "created_at": "2022-06-12T20:14:28.000Z",
+        "updated_at": "2022-06-12T20:14:28.000Z"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "phone",
+        "email",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "GetAdmin2": {
+      "title": "GetAdmin2",
+      "example": {
+        "message": "invalid or expired jwt"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "CreateMemberTypeRequest": {
+      "title": "CreateMemberTypeRequest",
+      "example": {
+        "name": "Free",
+        "description": "Access Free Ccontent",
+        "image": "",
+        "duration": 1,
+        "price": 100000
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "image",
+        "duration",
+        "price"
+      ]
+    },
+    "CreateMemberType1": {
+      "title": "CreateMemberType1",
+      "example": {
+        "code": 401,
+        "message": "token expired",
+        "result": null
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "CreateMemberType2": {
+      "title": "CreateMemberType2",
+      "example": {
+        "code": 201,
+        "message": "Success",
+        "result": {
+          "id": 2,
           "name": "Free",
           "description": "Access Free Ccontent",
-          "image": "",
-          "duration": 1,
-          "price": 100000
-        },
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          },
-          "duration": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "price": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "required": [
-          "name",
-          "description",
-          "image",
-          "duration",
-          "price"
-        ]
+          "price": 100000,
+          "created_at": "2022-06-29T17:01:51.012Z",
+          "updated_at": "2022-06-29T17:01:51.012Z"
+        }
       },
-      "CreateClassRequest": {
-        "title": "CreateClassRequest",
-        "example": {
-          "class_category_id": 2,
-          "trainer_name": "Sofyan",
-          "name": "Class 3",
-          "description": "Halos",
-          "price": 10000,
-          "meet_link": "http://google.com",
-          "category": "push up",
-          "image": "http://google.com",
-          "date": "2022-06-18",
-          "start_time": "09:30:00",
-          "end_time": "11:00:00",
-          "trainer_id": 3,
-          "is_offline": false
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
         },
-        "type": "object",
-        "properties": {
-          "class_category_id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "trainer_name": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "price": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "meet_link": {
-            "type": "string"
-          },
-          "category": {
-            "type": "string"
-          },
-          "image": {
-            "type": "string"
-          },
-          "date": {
-            "type": "string"
-          },
-          "start_time": {
-            "type": "string"
-          },
-          "end_time": {
-            "type": "string"
-          },
-          "trainer_id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "is_offline": {
-            "type": "boolean"
-          }
+        "message": {
+          "type": "string"
         },
-        "required": [
-          "class_category_id",
-          "trainer_name",
-          "name",
-          "description",
-          "price",
-          "meet_link",
-          "category",
-          "image",
-          "date",
-          "start_time",
-          "end_time",
-          "trainer_id",
-          "is_offline"
-        ]
+        "result": {
+          "$ref": "#/definitions/Result5"
+        }
       },
-      "CreateClassCategoryRequest": {
-        "title": "CreateClassCategoryRequest",
-        "example": {
-          "name": "push down"
-        },
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      }
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
     },
-    "security": [
-      {
-        "bearer": []
-      }
-    ],
-    "tags": [
-      {
-        "name": "Member"
+    "Result5": {
+      "title": "Result5",
+      "example": {
+        "id": 2,
+        "name": "Free",
+        "description": "Access Free Ccontent",
+        "price": 100000,
+        "created_at": "2022-06-29T17:01:51.012Z",
+        "updated_at": "2022-06-29T17:01:51.012Z"
       },
-      {
-        "name": "Admin"
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
       },
-      {
-        "name": "Class"
-      }
-    ]
-  }
+      "required": [
+        "id",
+        "name",
+        "description",
+        "price",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "CreateClassRequest": {
+      "title": "CreateClassRequest",
+      "example": {
+        "class_category_id": 3,
+        "trainer_name": "budi",
+        "name": "Class 5",
+        "description": "Haloss",
+        "price": 980000,
+        "meet_link": "http://google.com",
+        "category": "push up",
+        "image": "http://google.com",
+        "date": "2022-06-18T00:00:00.000Z",
+        "start_time": "09:30:00",
+        "end_time": "11:00:00",
+        "trainer_id": 5,
+        "is_offline": true
+      },
+      "type": "object",
+      "properties": {
+        "class_category_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "trainer_name": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "meet_link": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "start_time": {
+          "type": "string"
+        },
+        "end_time": {
+          "type": "string"
+        },
+        "trainer_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "is_offline": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "class_category_id",
+        "trainer_name",
+        "name",
+        "description",
+        "price",
+        "meet_link",
+        "category",
+        "image",
+        "date",
+        "start_time",
+        "end_time",
+        "trainer_id",
+        "is_offline"
+      ]
+    },
+    "CreateClass1": {
+      "title": "CreateClass1",
+      "example": {
+        "code": 401,
+        "message": "token expired",
+        "result": null
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "CreateClassCategoryRequest": {
+      "title": "CreateClassCategoryRequest",
+      "example": {
+        "name": "push down"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    },
+    "CreateClassCategory1": {
+      "title": "CreateClassCategory1",
+      "example": {
+        "code": 401,
+        "message": "token expired",
+        "result": null
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "CreateClassCategory2": {
+      "title": "CreateClassCategory2",
+      "example": {
+        "code": 201,
+        "message": "Success",
+        "result": {
+          "id": 1,
+          "name": "push down",
+          "slug": "push-down"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/Result7"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Result7": {
+      "title": "Result7",
+      "example": {
+        "id": 1,
+        "name": "push down",
+        "slug": "push-down"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "slug"
+      ]
+    },
+    "CreateNewAdminRequest": {
+      "title": "CreateNewAdminRequest",
+      "example": {
+        "name": "Admin",
+        "phone": "089647583033",
+        "email": "admin@mail.com",
+        "password": "password"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "phone",
+        "email",
+        "password"
+      ]
+    },
+    "CreateNewAdmin": {
+      "title": "CreateNewAdmin",
+      "example": {
+        "code": 201,
+        "message": "Success",
+        "result": {
+          "id": 3,
+          "name": "Admin2",
+          "phone": "0896287363",
+          "email": "admin2@mail.com",
+          "created_at": "2022-06-29T17:11:26.185Z",
+          "updated_at": "2022-06-29T17:11:26.185Z"
+        }
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/Result8"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Result8": {
+      "title": "Result8",
+      "example": {
+        "id": 3,
+        "name": "Admin2",
+        "phone": "0896287363",
+        "email": "admin2@mail.com",
+        "created_at": "2022-06-29T17:11:26.185Z",
+        "updated_at": "2022-06-29T17:11:26.185Z"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "phone",
+        "email",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    "GetClassCategory1": {
+      "title": "GetClassCategory1",
+      "example": {
+        "code": 401,
+        "message": "token expired",
+        "result": null
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "GetClassCategory2": {
+      "title": "GetClassCategory2",
+      "example": {
+        "code": 200,
+        "message": "Success",
+        "result": {
+          "class_category": {
+            "data": [
+              {
+                "id": 1,
+                "name": "push down",
+                "slug": "push-down"
+              }
+            ],
+            "page": 1,
+            "page_size": 10,
+            "sort": "Id desc",
+            "total_page": 1,
+            "total_rows": 1
+          }
+        }
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "$ref": "#/definitions/Result9"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
+    },
+    "Result9": {
+      "title": "Result9",
+      "example": {
+        "class_category": {
+          "data": [
+            {
+              "id": 1,
+              "name": "push down",
+              "slug": "push-down"
+            }
+          ],
+          "page": 1,
+          "page_size": 10,
+          "sort": "Id desc",
+          "total_page": 1,
+          "total_rows": 1
+        }
+      },
+      "type": "object",
+      "properties": {
+        "class_category": {
+          "$ref": "#/definitions/ClassCategory"
+        }
+      },
+      "required": [
+        "class_category"
+      ]
+    },
+    "ClassCategory": {
+      "title": "ClassCategory",
+      "example": {
+        "data": [
+          {
+            "id": 1,
+            "name": "push down",
+            "slug": "push-down"
+          }
+        ],
+        "page": 1,
+        "page_size": 10,
+        "sort": "Id desc",
+        "total_page": 1,
+        "total_rows": 1
+      },
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Datum"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sort": {
+          "type": "string"
+        },
+        "total_page": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total_rows": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "data",
+        "page",
+        "page_size",
+        "sort",
+        "total_page",
+        "total_rows"
+      ]
+    },
+    "Datum": {
+      "title": "Datum",
+      "example": {
+        "id": 1,
+        "name": "push down",
+        "slug": "push-down"
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "slug"
+      ]
+    },
+    "GetClassCategory4": {
+      "title": "GetClassCategory4",
+      "example": {
+        "message": "invalid or expired jwt"
+      },
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "message"
+      ]
+    },
+    "upadateclassrequest": {
+      "title": "upadateclassrequest",
+      "example": {
+        "class_category_id": 2,
+        "trainer_name": "Sofyan",
+        "name": "Class 3",
+        "description": "Halos",
+        "price": 10000,
+        "meet_link": "http://google.com",
+        "category": "push up",
+        "image": "http://google.com",
+        "date": "2022-06-18T00:00:00.000Z",
+        "start_time": "09:30:00",
+        "end_time": "11:00:00",
+        "trainer_id": 3,
+        "is_offline": true
+      },
+      "type": "object",
+      "properties": {
+        "class_category_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "trainer_name": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "meet_link": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "start_time": {
+          "type": "string"
+        },
+        "end_time": {
+          "type": "string"
+        },
+        "trainer_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "is_offline": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "class_category_id",
+        "trainer_name",
+        "name",
+        "description",
+        "price",
+        "meet_link",
+        "category",
+        "image",
+        "date",
+        "start_time",
+        "end_time",
+        "trainer_id",
+        "is_offline"
+      ]
+    },
+    "addtrainerrequest": {
+      "title": "addtrainerrequest",
+      "example": {
+        "name": "Trainer",
+        "email": "@gmail",
+        "dob": "01-09-1989",
+        "gender": "L",
+        "address": "jln ahmad yani 6 jember",
+        "phone": "08516283893",
+        "picture": "680137"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "picture": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "dob",
+        "gender",
+        "address",
+        "phone",
+        "picture"
+      ]
+    },
+    "updatetrainerrequest": {
+      "title": "updatetrainerrequest",
+      "example": {
+        "name": "Trainer",
+        "email": "@gmail",
+        "dob": "01-09-1989",
+        "gender": "L",
+        "address": "jln ahmad yani 6 jember",
+        "phone": "08516283893",
+        "picture": "680137"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "dob": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "picture": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "dob",
+        "gender",
+        "address",
+        "phone",
+        "picture"
+      ]
+    },
+    "addtransactionrequest": {
+      "title": "addtransactionrequest",
+      "example": {
+        "member_type_id": 1,
+        "payment_methode_id": 2,
+        "total_price": 350000,
+        "payment_receipt": "https://link.picture.com"
+      },
+      "type": "object",
+      "properties": {
+        "member_type_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "payment_methode_id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "total_price": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "payment_receipt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "member_type_id",
+        "payment_methode_id",
+        "total_price",
+        "payment_receipt"
+      ]
+    },
+    "addpaymentmethodrequest": {
+      "title": "addpaymentmethodrequest",
+      "example": {
+        "name": "MANDIRI",
+        "picture": "string",
+        "acc_number": 12219847334241,
+        "acc_name": "Dedi"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "picture": {
+          "type": "string"
+        },
+        "acc_number": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "acc_name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "picture",
+        "acc_number",
+        "acc_name"
+      ]
+    }
+  },
+  "security": [],
+  "tags": [
+    {
+      "name": "Member"
+    },
+    {
+      "name": "Admin"
+    },
+    {
+      "name": "Class"
+    },
+    {
+      "name": "Trainer"
+    },
+    {
+      "name": "Transaction"
+    },
+    {
+      "name": "Payment Methode"
+    }
+  ]
+}
