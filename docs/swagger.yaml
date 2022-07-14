@@ -38,40 +38,6 @@ paths:
               code: 401
               message: token expired
               result: null
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:48:00 GMT
-            Content-Length:
-              type: string
-              default: '53'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=QU2eVuhAeIkf4f0%2FZjdqLNmqg1UHLz56pyJe9crlJ7jcrVfPTyMjhLut5hhneSa4CtlYByqMOif1BcW0wlbBkpHydNckkmtnSWGJgmVXQqXx0n5rKAUhdGoqBJxzOkqnbSc%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723025b02e0d91bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '200':
           description: OK
           schema:
@@ -97,43 +63,31 @@ paths:
                   email: rani@gmail.com
                   created_at: 2022-06-29T16:52:09Z
                   updated_at: 2022-06-29T16:52:09Z
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:54:28 GMT
-            Transfer-Encoding:
-              type: string
-              default: chunked
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=ZwLuDngPhmTouHwcZ6iuwUwJeCiAl%2Bi6L1vk%2FtMy1O%2FjRdri9CYmb3%2Fpmo9C3ryj1rdS%2F0BxXVRz2XA8HmLMN3tVKf6Iel4iDGrUgsqnVa5YMzJ7QUzSoDdaV60YFo1qP64%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72302f2d1e3791bf-SIN
-            Content-Encoding:
-              type: string
-              default: br
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+  /member/{id}:
+    delete:
+      summary: Delete Member
+      tags:
+      - Member
+      operationId: DeleteMember
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "Member id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Success Delete
+          schema:
+            $ref: '#/definitions/DeleteMember1'
+        '400':
+          description: Bad Response
+          schema:
+            $ref: '#/definitions/DeleteMember2'
   /member/auth/register:
     post:
       summary: Register
@@ -160,40 +114,6 @@ paths:
               code: 400
               message: "Error 1062: Duplicate entry 'kholiqdev@icloud.com' for key 'members.email'"
               result: null
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:48:50 GMT
-            Content-Length:
-              type: string
-              default: '114'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=DcCICk5j05dDHlfBJBs6ijeMxsJW2FlsC%2B6Ol30kBjhcH2ITpElHAtTwt2S0ikMxEiHlFjeXTFLwMojV7gnrT2%2FH64ywLpHB1SVChqR7SYFBlTYuVlJF%2FwFWeUNp3etCRnU%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723026ec3d7991bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '201':
           description: Created
           schema:
@@ -208,41 +128,7 @@ paths:
                 email: rani@gmail.com
                 created_at: 2022-06-29T16:52:08.543Z
                 updated_at: 2022-06-29T16:52:08.543Z
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:52:08 GMT
-            Content-Length:
-              type: string
-              default: '174'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=Oi0ef2EOPghmBt05KuFNntAq0OubEYqot%2BeyqDxcKQEro4KTmjvvnT8gMMpWIgK0NL2RQxlGx2cbYOdpbxhek%2BRFdSM%2FcbXJ1vwNBFLpUhUiNT7y2Svqm7CcFnVPPaL%2FhVQ%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72302bbf6e8691bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
-      security: []
+
   /member/auth/login:
     post:
       summary: Login
@@ -272,43 +158,6 @@ paths:
                 type: Bearer
                 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6ImFjY2Vzc190b2tlbiJ9.x1GKs3VvxfdOeTOHJRsHYU-aQDOpG7JfUcZkLvAMO3E
                 refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4ifQ.1yhQIErbmzZSnjLuNTZ0KC1kBZ3ay-TShwmd7sXpeCQ
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:49:12 GMT
-            Transfer-Encoding:
-              type: string
-              default: chunked
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2BTIST0kFpLvf43wEMHzWPfK9D3vBiCP%2BgMpkV%2Bz%2FfAVrFAl9bwb0CphFXq8l8lWCt2X1dca%2FPHiyVXT94%2Fi2FzzpcEu9vhAmqFqWrZNDgnUhfQAWGpqiSpzhaqaKJPUkizM%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723027764bd791bf-SIN
-            Content-Encoding:
-              type: string
-              default: br
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '401':
           description: Unauthorized
           schema:
@@ -318,40 +167,7 @@ paths:
               code: 401
               message: record not found
               result: null
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:53:41 GMT
-            Content-Length:
-              type: string
-              default: '56'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=w3wosOIgILZfs3zPMMsIV4LGYY4jm8TRzg8lvb4Ir4awOV6bTx7LDNcF5YiSlTUK6K8UExt6Og3AYu1q7QVTI%2FTUjkr%2BAfM0g%2FEU046208k%2BWw0fg7VUKyeJohjZX3qU%2FQs%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72302e011c6991bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+          headers: {}
       security: []
   /member/auth/refresh:
     post:
@@ -382,43 +198,7 @@ paths:
                 type: Bearer
                 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg5NTMsImlhdCI6MTY1NjUyMTc1MywiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6ImFjY2Vzc190b2tlbiJ9.j_TTm4xG_RJZBWhEEDcPz-LwXgN2kRQyX6G3YKffxnI
                 refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg5NTMsImlhdCI6MTY1NjUyMTc1MywiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4ifQ.PSrOY7sjIz3VWpNg9mrfzcylq416I43wB85YVsTLlIA
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:55:53 GMT
-            Transfer-Encoding:
-              type: string
-              default: chunked
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=nFswY4W31F2tcxZArzWSlVXh8NmrddGc0SbvI2qgld9wqM8L8BWde0ensUJ8W4GKBLVc%2BUdPDfo5fFJCxJRhk8BVqM8G0UvzbAgYNEA8bGEgdG5xK7FPlX8vHeJ09H%2B%2FNGA%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 7230313f9ed691bf-SIN
-            Content-Encoding:
-              type: string
-              default: br
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+          headers: {}
         '401':
           description: Unauthorized
           schema:
@@ -426,40 +206,7 @@ paths:
           examples:
             application/json; charset=UTF-8:
               message: invalid or expired jwt
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:56:13 GMT
-            Content-Length:
-              type: string
-              default: '37'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=P40pBEq4dc7%2FqxM9MuKiEbqQLI63vF4oBmK18AYBZ%2FgtQJiO%2F%2BqnxJ8SfJcum2Yjs0tR7Tuis3giRYuO6C2w1yGbI6ItmFSvHUP0RUB6YkS59ERrI5zbQf5MDjWOHNHNHwI%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723031b90a5f91bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+          headers: {}
   /user/5:
     get:
       summary: Detail
@@ -478,40 +225,6 @@ paths:
           examples:
             application/json; charset=UTF-8:
               message: Not Found
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:57:36 GMT
-            Content-Length:
-              type: string
-              default: '24'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=hkpV%2FJK4pEVOD4WHG2XpiEDL4ERW6PMMZ%2Fr3uyW68WhxPuFeOayER2uD%2F7DmjcbKstfjD%2BXi3CbPKMv%2BwmQmcaIbHVbrKKO8vXyzRxeCsqXptciZ2h7K3LNFMqUoMP1lk48%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723033c29ae091bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
       security: []
   /member/join:
     post:
@@ -542,43 +255,36 @@ paths:
           examples:
             application/json; charset=UTF-8:
               message: Method Not Allowed
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 16:58:36 GMT
-            Content-Length:
-              type: string
-              default: '33'
-            Connection:
-              type: string
-              default: keep-alive
-            Allow:
-              type: string
-              default: OPTIONS, GET
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=MqbbmtnFiFYdiqkO7Qt0FJhs0F%2B75YCTHbDEqq5EuFaqTLKgKRKK2xCHlgXUVQAj%2BSS3cktHNTJ6lFoy9s8UP2abfeyyHfSZeQ%2FpuEZUNefQVI1qpO9GevTSYmHHrnzY5Zc%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72303539ab1791bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+  /member/detail/{id}:
+    put:
+      summary: Update Member Detail
+      tags:
+      - Member
+      operationId: UpdateMemberDetail
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: "path"
+        description: "Id that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated Member"
+        required: true
+        schema:
+          $ref: '#/definitions/MemberRequest'
+      responses:
+        '200':
+          description: Success Update
+          schema:
+            $ref: '#/definitions/UpdateMember1'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/UpdateMember2'
   /admin/user/list:
     get:
       summary: User List
@@ -604,40 +310,6 @@ paths:
               code: 401
               message: token expired
               result: null
-          headers:
-            Date:
-              type: string
-              default: Tue, 12 Jul 2022 02:44:18 GMT
-            Content-Length:
-              type: string
-              default: '53'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=g6%2Fu%2FX1AaLVVaODgMROpkaGFEFJ38SC7jrNmPRgn1GX%2FrJSacDngBB5uqjnYeLp4wGMuKGZAdN%2BjRStJTJvmRj0VuvHvlJFn3iwdlqieVr5jmEq9FCvuBtZw1h4Tl0H8fpk%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72966faa79c1a047-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '400':
           description: Bad Request
           schema:
@@ -647,40 +319,6 @@ paths:
               code: 400
               message: 'strconv.Atoi: parsing "user/list": invalid syntax'
               result: null
-          headers:
-            Date:
-              type: string
-              default: Tue, 12 Jul 2022 03:02:40 GMT
-            Content-Length:
-              type: string
-              default: '91'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2BHRBszd%2BrE7rkvsClqb2hxm4AI6WBh3rqzOJ6vHULuA2hSCmGyb5m95nZP8Klq4b60Cem5xcCKSLTqE2m36DZ6aGSzVOfKHPbwBHf2eNwCrAyq8FMpIAtF1ff6mKZyUuGRc%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72968a932d29a047-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
   /admin/list:
     get:
       summary: Get Admin
@@ -720,43 +358,6 @@ paths:
                   email: admin12@mail.com
                   created_at: 2022-06-15T12:13:52Z
                   updated_at: 2022-06-15T12:13:52Z
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:07:17 GMT
-            Transfer-Encoding:
-              type: string
-              default: chunked
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=qfNpwfcgqQkPVBl4%2BxM6%2FqB8jr9QV4Fd0DPTOkqze3Jc75z4Su3ac%2Fql6S%2BuIuLnyYCEomNJFggRnJzIkyuzgKsdbmrmMZKQdpxT3U0UNhpIpmrKoe0Clim91HUy3rDfywE%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723041f35b9091bf-SIN
-            Content-Encoding:
-              type: string
-              default: br
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '401':
           description: Unauthorized
           schema:
@@ -764,40 +365,6 @@ paths:
           examples:
             application/json; charset=UTF-8:
               message: invalid or expired jwt
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:08:12 GMT
-            Content-Length:
-              type: string
-              default: '37'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=WGepc%2Bj2HNUUydcXgiJqMv1jCAbLXarhPgD0FZr0%2BfWslo6yTPqMpj97Vw1H78I0TKS0I6NskyLXJzBKTLLOWBlPkzd2zDO6fIAgQLvPVQosPuBXznuD0PkMAIPZM3qsdmk%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 7230434b298d91bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '400':
           description: Bad Request
           schema:
@@ -805,40 +372,6 @@ paths:
           examples:
             application/json; charset=UTF-8:
               message: missing or malformed jwt
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:08:41 GMT
-            Content-Length:
-              type: string
-              default: '39'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=9DLNGEkMXjnN0T9DqJ5yePGP%2B5NDWcq7qe2lpaHZy5RGAPmBtrPjiKnG2saAU%2FaMIy8S%2F5%2BJYFeBApIkbUovdjeuHewvoX87fzDgPxbH74uWM4OB0QO2oyTim0HHMdPPLNk%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723043febce991bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
   /admin/member-type/create:
     post:
       summary: Create Member Type
@@ -870,40 +403,6 @@ paths:
               code: 401
               message: token expired
               result: null
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:00:24 GMT
-            Content-Length:
-              type: string
-              default: '53'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=RCr2EGp9Gz7ejjAyDFitfFfsrgciDKIXIvVg8t4zENxPFL13aJc5I29Sd7HwIfvBQxySeS3UnF47DzYO6lWDwnwc406dIKYrr3UJrZE2rcZHlyAqi4yIORlgHbwL6wr8uZ0%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723037da1ca891bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '201':
           description: Created
           schema:
@@ -919,40 +418,6 @@ paths:
                 price: 100000
                 created_at: 2022-06-29T17:01:51.012Z
                 updated_at: 2022-06-29T17:01:51.012Z
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:01:51 GMT
-            Content-Length:
-              type: string
-              default: '197'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=BE7mJ1R2R78ceeKiXfzF7ODWWtqza2F8Ye4eBYhqpvrJCgtrOa2HjArGo%2BvuWdfwq7sWkqN%2BmS3ratfgEjU2%2FzWBvVmnwlxxH%2BKcBVtGlPAIKog%2Bycr6uEg9GfTDOS2Zj2w%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723039f90f5291bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
   /admin/auth/login:
     post:
       summary: Login
@@ -982,43 +447,6 @@ paths:
                 type: Bearer
                 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1MjkyNDgsImlhdCI6MTY1NjUyMjA0OCwiaWQiOjEsIm5hbWUiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.9r8nNMpnqgX7huhj7sW_MZieEBVPECHFDOfPwCMMPS0
                 refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1MjkyNDgsImlhdCI6MTY1NjUyMjA0OCwiaWQiOjEsIm5hbWUiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsInRva2VuX3R5cGUiOiJyZWZyZXNoX3Rva2VuIn0.qbA1oRZVYQ9WMGXTISjNmuzGzBRUhYodWSUTE2OICZI
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:00:48 GMT
-            Transfer-Encoding:
-              type: string
-              default: chunked
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=2k34xbGXl0jGFesQgtn3Pv7VStTgvdFL5PpKkfreCTpGDpiqqR1wpKOYxFEwoeIAFZ1uMXowQT4OFyKfeSeh3BOgJqxMd6SlabyOVMF%2BJeZTlfkt3p8viC5sr1aXqk5AF8U%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723038730c0d91bf-SIN
-            Content-Encoding:
-              type: string
-              default: br
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '401':
           description: Unauthorized
           schema:
@@ -1028,40 +456,6 @@ paths:
               code: 401
               message: record not found
               result: null
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:02:35 GMT
-            Content-Length:
-              type: string
-              default: '56'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=yJ9e4XzSYpedbI8MBx7W0H2HjNsvV4LYeS4IMlaLeNpK20dQvxBwVe0%2FuzI7ZuLS16OvEphRgxl%2BAs90u6C8r4%2B3baK0dX9MJSUEKC80yoyWhCRzon7t2wpJmhiaFrsasd8%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72303b0bcd3b91bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
       security: []
   /admin/1:
     get:
@@ -1081,40 +475,6 @@ paths:
           examples:
             application/json; charset=UTF-8:
               message: missing or malformed jwt
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:03:54 GMT
-            Content-Length:
-              type: string
-              default: '39'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2FkjLeBNrZINLA9%2FhuiF0n%2BKn9amAlMjh%2FvLZo%2BCImbw2ojs1OMdBJp4nY%2F3VvmAJot0wSzVM5R5tx8iCVkQTMcN5IjmixI6jHfY3QG%2FwG6PRFn9iVjhkXLxOlwt%2FtjpoqJY%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72303cf889bc91bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
       security: []
   /admin/class/create:
     post:
@@ -1147,40 +507,6 @@ paths:
               code: 401
               message: token expired
               result: null
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:04:33 GMT
-            Content-Length:
-              type: string
-              default: '53'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=18tqbItxJO%2FPttS03jlgpo6ONHDXbw0dMtmt81qwzEgAUPjKQ1zcgdFwBShtfWgmoTIIz5cNmxjcti8oaz%2FXBNmU4FkA2c%2Bf1p7kxIl0e7wvP740O%2FpODiPnwpdADS5t%2BlU%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72303df23aa691bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '400':
           description: Bad Request
           schema:
@@ -1190,40 +516,6 @@ paths:
               code: 400
               message: 'Error 1452: Cannot add or update a child row: a foreign key constraint fails (`gym`.`classes`, CONSTRAINT `fk_classes_class_category` FOREIGN KEY (`class_category_id`) REFERENCES `class_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)'
               result: null
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:05:17 GMT
-            Content-Length:
-              type: string
-              default: '281'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2FyXv7MaXkRDrrlar49Ntmv3CGXjEYGtVOcJL6lRGG8qNaVSI9vHCYjXdAH%2BJEx8IDRWAgsrfRrdX%2BVxbjrOo%2BFWCSneDluufz0RNHwwiyHPIpymw8V9Mz5V4X7qS%2FjW8lUY%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 72303f034dac91bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
   /admin/class-category/create:
     post:
       summary: Create Class Category
@@ -1255,40 +547,6 @@ paths:
               code: 401
               message: token expired
               result: null
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:09:42 GMT
-            Content-Length:
-              type: string
-              default: '53'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=WwocxvABybLmI9IIlruL8AWNmDEA973XnncvypwAlJfAmpFsQnCo2Wpx0mDsG70jIPDpmLovZ7h6Gy2yz5La91VaL1W%2FCh9cHtVvQzykxo5IxaxHJGSbisFrfygs1XiY%2Bbw%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 7230457db92091bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '201':
           description: Created
           schema:
@@ -1301,40 +559,6 @@ paths:
                 id: 1
                 name: push down
                 slug: push-down
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:10:20 GMT
-            Content-Length:
-              type: string
-              default: '89'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=sEK1Pa06kD%2BVI6tKBl3wFAO8p%2B%2Bk%2FsgkUjVWNZ6eZzdNTM8fl2bx3fxcNz5EAodVpAn%2BgEsKUkf3CPs1x5fbuJMTcdSEquEu5yF0H6Pi7pVa7sWWeTP2Dj%2FhDhkNrJ3K2nY%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 7230466a688891bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
   /admin/create:
     post:
       summary: Create New Admin
@@ -1367,40 +591,6 @@ paths:
                 email: admin2@mail.com
                 created_at: 2022-06-29T17:11:26.185Z
                 updated_at: 2022-06-29T17:11:26.185Z
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:11:26 GMT
-            Content-Length:
-              type: string
-              default: '194'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=5Gt%2BxwvxRM8I1KWzM7L%2FM8oXu%2BXL1xa3dbRA6lnkF4I1FAcJalbaPqeW9gd%2BRVc7oXGEjundCQPrtUyo%2FSHe5gKMiPYDO8HW1BLQhoNH%2F25gpO6Nz3AXF%2FXzHckvNtQmcH8%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723048022d3891bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
       security: []
   /admin/class-category:
     get:
@@ -1430,40 +620,6 @@ paths:
               result: null
             application/json; charset=UTF-8:
               message: invalid or expired jwt
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:12:09 GMT
-            Content-Length:
-              type: string
-              default: '53'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=J6QUaqU%2FKd9R7pawu6XxeGeGoDjO%2F9ETGKFHQ%2FE75HlHrsfKe1oU3iEqOwSL7Hm5lWWu8KpeYCi%2BqCF5fu0JcC1FJRMgtnx6%2FyH4BxEVIsAU%2F5B8h8upYBk9GlGEH3F3BlI%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723049101d5c91bf-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '200':
           description: OK
           schema:
@@ -1483,43 +639,60 @@ paths:
                   sort: Id desc
                   total_page: 1
                   total_rows: 1
-          headers:
-            Date:
-              type: string
-              default: Wed, 29 Jun 2022 17:12:40 GMT
-            Transfer-Encoding:
-              type: string
-              default: chunked
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=HLtJW9v0t2wXWl1TRGvchakcmv3HFBaqxd9uxKyzqxiSjzn4L2FGfHfgAa0PhtZxZjylwH8l3VDOY1AOIGPUH5NZ7IpPCAZPXj8v9Hw4vcTqYIDKhCI7TcUcqJJEoHpsspQ%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 723049d6295091bf-SIN
-            Content-Encoding:
-              type: string
-              default: br
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+  /admin/{id}:
+    delete:
+      summary: Delete Admin
+      tags:
+      - Admin
+      operationId: DeleteAdmin
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "Admin id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Success Delete
+          schema:
+            $ref: '#/definitions/DeleteAdmin1'
+        '400':
+          description: Bad Response
+          schema:
+            $ref: '#/definitions/DeleteAdmin2'
+    put:
+      summary: Update Admin
+      tags:
+      - Admin
+      operationId: UpdateAdmin
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: "path"
+        description: "Id that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated Admin"
+        required: true
+        schema:
+          $ref: '#/definitions/AdminRequest'
+      responses:
+        '200':
+          description: Success Update
+          schema:
+            $ref: '#/definitions/UpdateAdmin1'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/UpdateAdmin2'
   /class:
     get:
       summary: Get Class
@@ -1568,43 +741,6 @@ paths:
                   sort: Id desc
                   total_page: 1
                   total_rows: 1
-          headers:
-            Date:
-              type: string
-              default: Tue, 12 Jul 2022 03:00:28 GMT
-            Transfer-Encoding:
-              type: string
-              default: chunked
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=NIXulf1DWzhSeGd3PBh4UbcZg1CJVfYw0D%2Fp1COXmp0FoG%2B9pFEw0Zov2X47wrdbryXVwrGFhY1QRtBy6uxY74OnQa1%2BgSC%2Fde0TrdvztF9i%2Bp5xS%2BkmvGPp8QMHP5eWUcg%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 7296875c0c48a047-SIN
-            Content-Encoding:
-              type: string
-              default: br
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
         '401':
           description: Unauthorized
           schema:
@@ -1612,40 +748,265 @@ paths:
           examples:
             application/json; charset=UTF-8:
               message: invalid or expired jwt
-          headers:
-            Date:
-              type: string
-              default: Tue, 12 Jul 2022 03:01:04 GMT
-            Content-Length:
-              type: string
-              default: '37'
-            Connection:
-              type: string
-              default: keep-alive
-            Vary:
-              type: string
-              default: Origin
-            CF-Cache-Status:
-              type: string
-              default: DYNAMIC
-            Expect-CT:
-              type: string
-              default: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-            Report-To:
-              type: string
-              default: '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=nV6P6K39LlUDiY57oPtwsM3O%2FjZANNeyvqp1Z1yNLuZXr%2Fqj3uzYTdQCxGsynmllqdvmuN4IsQDJX4bdPF22c%2FI2e41QJ6bF%2BTLx%2Bg4ZpwWiZ513dljR6sWQnz%2BGcsbkHXk%3D"}],"group":"cf-nel","max_age":604800}'
-            NEL:
-              type: string
-              default: '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
-            Server:
-              type: string
-              default: cloudflare
-            CF-RAY:
-              type: string
-              default: 7296883cca62a047-SIN
-            alt-svc:
-              type: string
-              default: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+  /class/{id}:
+    delete:
+      summary: delete class
+      tags:
+      - Class
+      operationId: deleteclass
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "class id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Success Delete
+          schema:
+            $ref: '#/definitions/Deleteclass1'
+        '400':
+          description: Bad Response
+          schema:
+            $ref: '#/definitions/Deleteclass2'
+    put:
+      summary: Update Class
+      tags:
+      - Class
+      operationId: UpdateClass
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "class id to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Success Delete
+          schema:
+            $ref: '#/definitions/Updateclass1'
+        '400':
+          description: Bad Response
+          schema:
+            $ref: '#/definitions/Updateclass2'
+  /transaction:
+    post:
+      summary: Add Transaction
+      tags:
+      - Transaction
+      operationId: AddTransaction
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: Get All Transaction
+      tags:
+      - Transaction
+      operationId: GetAllTransaction
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /transaction/id:
+    get:
+      summary: Get Transaction By Id
+      tags:
+      - Transaction
+      operationId: GetTransactionById
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /transaction/{id}:
+    put:
+      summary: Update Transaction Status
+      tags:
+      - Transaction
+      operationId: UpdateTransactionStatus
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "class id to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Success Delete
+          schema:
+            $ref: '#/definitions/Updatetransaction1'
+        '400':
+          description: Bad Response
+          schema:
+            $ref: '#/definitions/Updatetransaction2'
+    delete:
+      summary: Delete Transaction
+      tags:
+      - Transaction
+      operationId: DeleteTransaction
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "class id to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Success Delete
+          schema:
+            $ref: '#/definitions/Deletetransaction1'
+        '400':
+          description: Bad Response
+          schema:
+            $ref: '#/definitions/Deletetransaction2'
+  /payment/methode:
+    post:
+      summary: Add Payment Methode
+      tags:
+      - Payment Methode
+      operationId: AddPaymentMethode
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: Get All Payment
+      tags:
+      - Payment Methode
+      operationId: GetAllPayment
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /payment/methode/id:
+    get:
+      summary: Get Payment Methode By Id
+      tags:
+      - Payment Methode
+      operationId: GetPaymentMethodeById
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /payment/methode/{id}:
+    put:
+      summary: Update Payment Methode
+      tags:
+      - Payment Methode
+      operationId: UpdatePaymentMethode
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "class id to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Success Delete
+          schema:
+            $ref: '#/definitions/UpdatepayMethode1'
+        '400':
+          description: Bad Response
+          schema:
+            $ref: '#/definitions/UpdatepayMethode2'
+    delete:
+      summary: Delete Payment Methode
+      tags:
+      - Payment Methode
+      operationId: DeletePaymentMethode
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        description: "class id to update"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        '200':
+          description: Success Delete
+          schema:
+            $ref: '#/definitions/DeletepayMethode1'
+        '400':
+          description: Bad Response
+          schema:
+            $ref: '#/definitions/DeletepayMethode2'
 definitions:
   GetUser1:
     title: GetUser1
@@ -1701,6 +1062,24 @@ definitions:
     - code
     - message
     - result
+  DeleteMember1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Delete Member
+        rescode:
+          type: number
+          example: 200
+  DeleteMember2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
   Result:
     title: Result
     example:
@@ -1755,6 +1134,39 @@ definitions:
     - email
     - created_at
     - updated_at
+    
+  MemberRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Name
+        phone:
+          type: number
+          example: 0987654435678
+        email:
+          type: string
+          example: email@gmail.com
+  
+  UpdateMember1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Update Member
+        rescode:
+          type: number
+          example: 200
+  UpdateMember2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
+    
   RegisterRequest:
     title: RegisterRequest
     example:
@@ -2019,6 +1431,26 @@ definitions:
         type: string
     required:
     - message
+    
+  UpdateAdmin1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Update Member
+        rescode:
+          type: number
+          example: 200
+  UpdateAdmin2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
+    
   userlist1:
     title: userlist1
     example:
@@ -2515,6 +1947,117 @@ definitions:
     - code
     - message
     - result
+    
+  DeleteAdmin1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Delete Admin
+        rescode:
+          type: number
+          example: 200
+  DeleteAdmin2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
+  
+  AdminRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Name
+        phone:
+          type: number
+          example: 0987654435678
+        email:
+          type: string
+          example: email@gmail.com
+          
+  Deleteclass1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Delete admin
+        rescode:
+          type: number
+          example: 200
+          
+  Deleteclass2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
+          
+  Updateclass1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Update Member
+        rescode:
+          type: number
+          example: 200
+  Updateclass2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
+          
+  Deletetransaction1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Delete admin
+        rescode:
+          type: number
+          example: 200
+          
+  Deletetransaction2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
+          
+  Updatetransaction1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Update Member
+        rescode:
+          type: number
+          example: 200
+  Updatetransaction2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
+    
   Result9:
     title: Result9
     example:
@@ -2794,6 +2337,46 @@ definitions:
     - category_name
     - created_at
     - updated_at
+    
+  DeletepayMethode1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Delete Payment Methode
+        rescode:
+          type: number
+          example: 200
+          
+  DeletepayMethode2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
+          
+  UpdatepayMethode1:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Success Update Payment Methode
+        rescode:
+          type: number
+          example: 200
+  UpdatepayMethode2:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Bad Request
+        rescode:
+          type: number
+          example: 400
+    
   GetClass2:
     title: GetClass2
     example:
@@ -2810,3 +2393,5 @@ tags:
 - name: User
 - name: Admin
 - name: Class
+- name: Transaction
+- name: Payment Methode
