@@ -25,6 +25,7 @@ func CreateClassBookingResponse(booking *entity.ClassBooking) ClassBookingRespon
 		ID:                 booking.ID,
 		InvoiceNo:          booking.InvoiceNo,
 		PaymentMethod:      booking.PaymentMethod,
+		MemberID:           booking.MemberID,
 		MemberName:         booking.MemberName,
 		MemberPhone:        booking.MemberPhone,
 		MemberEmail:        booking.MemberEmail,
@@ -39,7 +40,7 @@ func CreateClassBookingResponse(booking *entity.ClassBooking) ClassBookingRespon
 	return bookingResp
 }
 
-func CreateOfflineListResponse(bookings *entity.ClassBookingList) ClassBookingListResponse {
+func CreateClassBookingListResponse(bookings *entity.ClassBookingList) ClassBookingListResponse {
 	bookingsResp := ClassBookingListResponse{}
 	for _, p := range *bookings {
 		booking := CreateClassBookingResponse(p)

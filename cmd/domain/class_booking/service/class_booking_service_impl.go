@@ -10,6 +10,7 @@ import (
 	"gym/cmd/domain/class_booking/entity"
 	"gym/cmd/domain/class_booking/repository"
 	_rMember "gym/cmd/domain/member/repository"
+	"gym/pkg/database"
 	"gym/pkg/nullstring"
 	"strings"
 	"time"
@@ -21,9 +22,25 @@ type ClassBookingServiceImpl struct {
 	RepoMember       _rMember.MemberRepository
 }
 
-func (s *ClassBookingServiceImpl) GetAll(ctx echo.Context) (*dto.ClassBookingListResponse, error) {
-	//TODO implement me
-	panic("implement me")
+func (s *ClassBookingServiceImpl) GetAll(ctx echo.Context, pagination *database.Pagination) (*dto.ClassBookingListResponse, error) {
+	classBookings, err := s.RepoClassBooking.FindAll(ctx, pagination)
+	if err != nil {
+		log.Err(err).Msg("Error fetch orders from DB")
+		return nil, err
+	}
+	classBookingsResp := dto.CreateClassBookingListResponse(classBookings)
+	return &classBookingsResp, nil
+}
+
+func (s *ClassBookingServiceImpl) GetAllByMember(ctx echo.Context, pagination *database.Pagination) (*dto.ClassBookingListResponse, error) {
+	memberId := ctx.Get("user_id").(float64)
+	classBookings, err := s.RepoClassBooking.FindAllByMember(ctx, uint(memberId), pagination)
+	if err != nil {
+		log.Err(err).Msg("Error fetch orders from DB")
+		return nil, err
+	}
+	classBookingsResp := dto.CreateClassBookingListResponse(classBookings)
+	return &classBookingsResp, nil
 }
 
 func (s *ClassBookingServiceImpl) GetByInvoice(ctx echo.Context, invoice string) (*dto.ClassBookingResponse, error) {

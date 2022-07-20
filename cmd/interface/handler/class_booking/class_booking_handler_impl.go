@@ -5,11 +5,35 @@ import (
 	"gym/cmd/domain/class_booking/dto"
 	"gym/cmd/domain/class_booking/service"
 	"gym/internal/protocol/http/response"
+	"gym/pkg/database"
 	"net/http"
 )
 
 type ClassBookingHandlerImpl struct {
 	Svc service.ClassBookingService
+}
+
+func (h ClassBookingHandlerImpl) Get(ctx echo.Context) error {
+	pagination := database.NewPagination(ctx)
+
+	classBookings, err := h.Svc.GetAll(ctx, pagination)
+
+	if err != nil {
+		response.Err(ctx, http.StatusBadRequest, err)
+		return err
+	}
+
+	response.Json(ctx, http.StatusOK, "Success", map[string]interface{}{
+		"class_bookings": map[string]interface{}{
+			"data":       classBookings,
+			"sort":       pagination.GetSort(),
+			"page":       pagination.GetPage(),
+			"page_size":  pagination.GetLimit(),
+			"total_page": pagination.GetTotalPage(),
+			"total_rows": pagination.GetTotalRows(),
+		},
+	})
+	return nil
 }
 
 func (h ClassBookingHandlerImpl) Order(ctx echo.Context) error {

@@ -6,6 +6,7 @@ type ClassBookingResponse struct {
 	ID                 uint                          `json:"id,omitempty"`
 	InvoiceNo          string                        `json:"invoice_no,omitempty"`
 	PaymentMethod      string                        `json:"payment_method,omitempty"`
+	MemberID           uint                          `json:"member_id,omitempty"`
 	MemberName         string                        `json:"member_name,omitempty"`
 	MemberPhone        string                        `json:"member_phone,omitempty"`
 	MemberEmail        string                        `json:"member_email,omitempty"`

@@ -84,5 +84,6 @@ func (h *HttpHandlerImpl) RegisterPath(e *echo.Echo) {
 		classGroup.GET("", h.class.Get, auth.JwtVerifyAccess("member"))
 		classGroup.GET("/:id", h.class.Detail, auth.JwtVerifyAccess("member"))
 		classGroup.POST("/order", h.classBooking.Order, auth.JwtVerifyAccess("member"))
+		classGroup.GET("/order/history", h.classBooking.Get, auth.JwtVerifyAccess("member"))
 	}
 }
