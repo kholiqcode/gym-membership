@@ -10,9 +10,10 @@ import (
 	"gym/cmd/interface/handler"
 	"gym/cmd/interface/handler/admin"
 	"gym/cmd/interface/handler/class"
+	"gym/cmd/interface/handler/class_booking"
+	"gym/cmd/interface/handler/class_category"
 	"gym/cmd/interface/handler/health"
 	"gym/cmd/interface/handler/member"
-	"gym/cmd/interface/handler/class_category"
 	"gym/config"
 	"gym/infrastructure/database"
 	"gym/internal/protocol/http"
@@ -54,15 +55,15 @@ func InitHttpProtocol(mode string) (*http.HttpImpl, error) {
 	if err != nil {
 		return nil, err
 	}
-	trainerRepositoryImpl, err := class_category.ProvideRepository(databaseImpl)
+	classCategoryRepositoryImpl, err := class_category.ProvideRepository(databaseImpl)
 	if err != nil {
 		return nil, err
 	}
-	trainerServiceImpl, err := class_category.ProvideService(trainerRepositoryImpl)
+	classCategoryServiceImpl, err := class_category.ProvideService(classCategoryRepositoryImpl)
 	if err != nil {
 		return nil, err
 	}
-	adminHandlerImpl, err := admin.ProvideHandler(adminServiceImpl, memberServiceImpl, classServiceImpl, trainerServiceImpl)
+	adminHandlerImpl, err := admin.ProvideHandler(adminServiceImpl, memberServiceImpl, classServiceImpl, classCategoryServiceImpl)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +75,19 @@ func InitHttpProtocol(mode string) (*http.HttpImpl, error) {
 	if err != nil {
 		return nil, err
 	}
-	httpHandlerImpl := handler.NewHttpHandler(memberHandlerImpl, adminHandlerImpl, healthHandlerImpl, classHandlerImpl)
+	classBookingRepositoryImpl, err := class_booking.ProvideRepository(databaseImpl)
+	if err != nil {
+		return nil, err
+	}
+	classBookingServiceImpl, err := class_booking.ProvideService(classBookingRepositoryImpl, classRepositoryImpl, memberRepositoryImpl)
+	if err != nil {
+		return nil, err
+	}
+	classBookingHandlerImpl, err := class_booking.ProvideHandler(classBookingServiceImpl)
+	if err != nil {
+		return nil, err
+	}
+	httpHandlerImpl := handler.NewHttpHandler(memberHandlerImpl, adminHandlerImpl, healthHandlerImpl, classHandlerImpl, classBookingHandlerImpl)
 	httpRouterImpl := router.NewHttpRoute(httpHandlerImpl)
 	httpImpl := http.NewHttpProtocol(httpRouterImpl, configConfig)
 	return httpImpl, nil

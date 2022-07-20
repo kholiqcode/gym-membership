@@ -6,15 +6,16 @@ import (
 	"gym/cmd/domain/member/service"
 	"gym/internal/protocol/http/response"
 	"net/http"
-	"strconv"
 )
 
 type MemberHandlerImpl struct {
 	SvcMember service.MemberService
 }
 
-func (h MemberHandlerImpl) Get(ctx echo.Context) error {
-	members, err := h.SvcMember.GetMembers()
+func (h MemberHandlerImpl) JoinHistory(ctx echo.Context) error {
+	id := ctx.Get("user_id").(float64)
+
+	memberJoinHistory, err := h.SvcMember.GetJoinHistory(uint(id))
 
 	if err != nil {
 		response.Err(ctx, http.StatusBadRequest, err)
@@ -22,17 +23,13 @@ func (h MemberHandlerImpl) Get(ctx echo.Context) error {
 	}
 
 	response.Json(ctx, http.StatusOK, "Success", map[string]interface{}{
-		"members": members,
+		"members_join_history": memberJoinHistory,
 	})
 	return nil
 }
 
 func (h MemberHandlerImpl) Detail(ctx echo.Context) error {
-	id, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		response.Err(ctx, http.StatusBadRequest, err)
-		return err
-	}
+	id := ctx.Get("user_id").(float64)
 
 	member, err := h.SvcMember.GetMemberById(uint(id))
 

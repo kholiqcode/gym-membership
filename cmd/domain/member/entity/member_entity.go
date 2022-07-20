@@ -41,6 +41,8 @@ type MemberType struct {
 	Member []*Member `gorm:"constraint:OnUpdate:CASCADE,OnDelete:SET NULL;"`
 }
 
+type MemberJoinList []*MemberJoin
+
 type MemberJoin struct {
 	ID                 uint `gorm:"primaryKey;autoIncrement;<-:create"`
 	MemberID           uint

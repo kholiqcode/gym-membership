@@ -60,6 +60,15 @@ func CreateMemberJoinResponse(memberJoin *entity.MemberJoin) MemberJoinResponse 
 	}
 }
 
+func CreateMemberJoinListResponse(memberOrders *entity.MemberJoinList) MemberOrderListResponse {
+	memberOrderResp := MemberOrderListResponse{}
+	for _, p := range *memberOrders {
+		memberOrder := CreateMemberJoinResponse(p)
+		memberOrderResp = append(memberOrderResp, &memberOrder)
+	}
+	return memberOrderResp
+}
+
 func CreateMemberAuthResponse(token dto.AccessToken, member *entity.Member) MemberAuthResponse {
 	return MemberAuthResponse{
 		Type:         token.Type,

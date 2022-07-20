@@ -21,6 +21,16 @@ func (r *MemberRepositoryImpl) FindAll() (*entity.MemberList, error) {
 	return &members, nil
 }
 
+func (r *MemberRepositoryImpl) FindAllJoinHistory(memberId uint) (*entity.MemberJoinList, error) {
+	var memberOrders entity.MemberJoinList
+
+	if e := r.Db.Debug().Preload(clause.Associations).Where("member_id = ?", memberId).Find(&memberOrders).Error; e != nil {
+		return nil, e
+	}
+
+	return &memberOrders, nil
+}
+
 func (r *MemberRepositoryImpl) Find(memberId uint) (*entity.Member, error) {
 	var member entity.Member
 

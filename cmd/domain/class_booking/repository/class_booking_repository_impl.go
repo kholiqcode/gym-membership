@@ -20,7 +20,9 @@ func (r *ClassBookingRepositoryImpl) FindByInvoice(ctx echo.Context, trainerID u
 	panic("implement me")
 }
 
-func (r *ClassBookingRepositoryImpl) Insert(ctx echo.Context, entity *entity.ClassBooking) (*entity.ClassBooking, error) {
-	//TODO implement me
-	panic("implement me")
+func (r *ClassBookingRepositoryImpl) Insert(ctx echo.Context, classBooking *entity.ClassBooking) (*entity.ClassBooking, error) {
+	if e := r.Db.Debug().Preload("ClassBookingDetail").Create(&classBooking).Error; e != nil {
+		return nil, e
+	}
+	return classBooking, nil
 }

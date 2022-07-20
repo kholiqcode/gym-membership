@@ -22,6 +22,16 @@ func (r *ClassRepositoryImpl) FindAll(ctx echo.Context, pagination *database.Pag
 	return &classes, nil
 }
 
+func (r *ClassRepositoryImpl) FindByIds(ctx echo.Context, classessId []int) (*entity.ClassList, error) {
+	var classes entity.ClassList
+
+	if e := r.Db.Debug().Preload("ClassCategory").Preload(clause.Associations).Find(&classes, classessId).Error; e != nil {
+		return nil, e
+	}
+
+	return &classes, nil
+}
+
 func (r *ClassRepositoryImpl) Find(ctx echo.Context, id uint) (*entity.Class, error) {
 	var class entity.Class
 	if e := r.Db.Debug().First(&class, id).Error; e != nil {

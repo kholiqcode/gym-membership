@@ -53,4 +53,5 @@ type MemberJoinResponse struct {
 	Total              float64 `json:"total,omitempty"`
 }
 
+type MemberOrderListResponse []*MemberJoinResponse
 type MemberListResponse []*MemberResponse

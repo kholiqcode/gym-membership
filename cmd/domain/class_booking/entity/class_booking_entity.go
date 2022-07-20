@@ -38,13 +38,13 @@ type ClassBookingDetail struct {
 	ClassName        string `gorm:"not null"`
 	ClassDescription string `gorm:"not null"`
 	ClassMeetLink    sql.NullString
-	ClassCategory    uint      `gorm:"not null"`
-	ClassImage       string    `gorm:"not null"`
-	ClassPrice       float64   `gorm:"not null"`
-	ClassDate        time.Time `gorm:"type:DATE NOT NULL"`
-	ClassStartTime   time.Time `gorm:"type:TIME NOT NULL"`
-	ClassEndTime     time.Time `gorm:"type:TIME NOT NULL"`
-	ClassTrainerName string    `gorm:"not null"`
+	ClassCategory    uint    `gorm:"not null"`
+	ClassImage       string  `gorm:"not null"`
+	ClassPrice       float64 `gorm:"not null"`
+	ClassDate        string  `gorm:"type:DATE NOT NULL"`
+	ClassStartTime   string  `gorm:"type:TIME NOT NULL"`
+	ClassEndTime     string  `gorm:"type:TIME NOT NULL"`
+	ClassTrainerName string  `gorm:"not null"`
 
 	CreatedAt time.Time `gorm:"type:DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP"`
 	UpdatedAt time.Time `gorm:"type:DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"`
