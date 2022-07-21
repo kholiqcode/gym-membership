@@ -5,16 +5,18 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"gym/cmd/interface/handler/admin"
 	"gym/cmd/interface/handler/class"
+	"gym/cmd/interface/handler/class_booking"
 	"gym/cmd/interface/handler/health"
 	"gym/cmd/interface/handler/member"
 	"gym/internal/protocol/http/middleware/auth"
 )
 
 type HttpHandlerImpl struct {
-	member member.MemberHandler
-	admin  admin.AdminHandler
-	health health.HealthHandler
-	class  class.ClassHandler
+	member       member.MemberHandler
+	admin        admin.AdminHandler
+	health       health.HealthHandler
+	class        class.ClassHandler
+	classBooking class_booking.ClassBookingHandler
 }
 
 func NewHttpHandler(
@@ -22,12 +24,14 @@ func NewHttpHandler(
 	admin admin.AdminHandler,
 	health health.HealthHandler,
 	class class.ClassHandler,
+	classBooking class_booking.ClassBookingHandler,
 ) *HttpHandlerImpl {
 	return &HttpHandlerImpl{
-		member: member,
-		admin:  admin,
-		health: health,
-		class:  class,
+		member:       member,
+		admin:        admin,
+		health:       health,
+		class:        class,
+		classBooking: classBooking,
 	}
 }
 
@@ -56,14 +60,15 @@ func (h *HttpHandlerImpl) RegisterPath(e *echo.Echo) {
 	// Member group
 	memberGroup := e.Group("member")
 	{
-		memberGroup.GET("", h.member.Get, auth.JwtVerifyAccess("member"))
-		memberGroup.GET("/:id", h.member.Detail)
+		memberGroup.GET("/detail", h.member.Detail, auth.JwtVerifyAccess("member"))
+		memberGroup.GET("/join/history", h.member.JoinHistory, auth.JwtVerifyAccess("member"))
 		memberGroup.POST("/join", h.member.Join, auth.JwtVerifyAccess("member"))
 	}
 
 	// Admin group
 	adminGroup := e.Group("admin")
 	{
+		adminGroup.GET("/user/list", h.admin.GetMember, auth.JwtVerifyAccess("admin"))
 		adminGroup.GET("/list", h.admin.Get, auth.JwtVerifyAccess("admin"))
 		adminGroup.GET("/:id", h.admin.Detail, auth.JwtVerifyAccess("admin"))
 		adminGroup.POST("/create", h.admin.Create)
@@ -78,5 +83,7 @@ func (h *HttpHandlerImpl) RegisterPath(e *echo.Echo) {
 	{
 		classGroup.GET("", h.class.Get, auth.JwtVerifyAccess("member"))
 		classGroup.GET("/:id", h.class.Detail, auth.JwtVerifyAccess("member"))
+		classGroup.POST("/order", h.classBooking.Order, auth.JwtVerifyAccess("member"))
+		classGroup.GET("/order/history", h.classBooking.Get, auth.JwtVerifyAccess("member"))
 	}
 }

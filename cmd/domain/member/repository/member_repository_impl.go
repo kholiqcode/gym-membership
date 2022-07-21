@@ -2,6 +2,7 @@ package repository
 
 import (
 	"gorm.io/gorm"
+	"gorm.io/gorm/clause"
 	"gym/cmd/domain/member/entity"
 )
 
@@ -13,11 +14,21 @@ type MemberRepositoryImpl struct {
 func (r *MemberRepositoryImpl) FindAll() (*entity.MemberList, error) {
 	var members entity.MemberList
 
-	if e := r.Db.Debug().Find(&members).Error; e != nil {
+	if e := r.Db.Debug().Preload("MemberOrder").Preload(clause.Associations).Find(&members).Error; e != nil {
 		return nil, e
 	}
 
 	return &members, nil
+}
+
+func (r *MemberRepositoryImpl) FindAllJoinHistory(memberId uint) (*entity.MemberJoinList, error) {
+	var memberOrders entity.MemberJoinList
+
+	if e := r.Db.Debug().Preload(clause.Associations).Where("member_id = ?", memberId).Find(&memberOrders).Error; e != nil {
+		return nil, e
+	}
+
+	return &memberOrders, nil
 }
 
 func (r *MemberRepositoryImpl) Find(memberId uint) (*entity.Member, error) {

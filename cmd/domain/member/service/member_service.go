@@ -8,6 +8,7 @@ import (
 type MemberService interface {
 	GetMembers() (*dto.MemberListResponse, error)
 	GetMemberById(memberId uint) (*dto.MemberResponse, error)
+	GetJoinHistory(memberId uint) (*dto.MemberOrderListResponse, error)
 	Store(request *dto.MemberCreateRequest) (*dto.MemberResponse, error)
 	StoreMemberType(request *dto.MemberTypeCreateRequest) (*dto.MemberTypeResponse, error)
 	StoreMemberJoin(ctx echo.Context, request *dto.MemberJoinRequest) (*dto.MemberJoinResponse, error)

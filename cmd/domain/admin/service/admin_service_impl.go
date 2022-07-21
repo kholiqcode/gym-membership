@@ -84,7 +84,7 @@ func (s AdminServiceImpl) Login(request *dto.AdminLoginRequest) (*dto.AdminAuthR
 		"exp":  time.Now().Add(time.Hour * 2).Unix(),
 	})
 
-	authResp := dto.CreateAdminAuthResponse(accessToken)
+	authResp := dto.CreateAdminAuthResponse(accessToken, admin)
 
 	return &authResp, nil
 }
@@ -103,7 +103,7 @@ func (s AdminServiceImpl) Refresh(adminId uint) (*dto.AdminAuthResponse, error) 
 		"exp":  time.Now().Add(time.Hour * 2).Unix(),
 	})
 
-	authResp := dto.CreateAdminAuthResponse(accessToken)
+	authResp := dto.CreateAdminAuthResponse(accessToken, admin)
 
 	return &authResp, nil
 }

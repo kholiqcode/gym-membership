@@ -84,6 +84,16 @@ func (s MemberServiceImpl) StoreMemberType(request *dto.MemberTypeCreateRequest)
 	return &adminResp, nil
 }
 
+func (s MemberServiceImpl) GetJoinHistory(memberId uint) (*dto.MemberOrderListResponse, error) {
+	memberOrders, err := s.RepoMember.FindAllJoinHistory(memberId)
+	if err != nil {
+		log.Err(err).Msg("Error fetch member join history from DB")
+		return nil, err
+	}
+	memberOrdersResp := dto.CreateMemberJoinListResponse(memberOrders)
+	return &memberOrdersResp, nil
+}
+
 func (s MemberServiceImpl) StoreMemberJoin(ctx echo.Context, request *dto.MemberJoinRequest) (*dto.MemberJoinResponse, error) {
 	memberId := ctx.Get("user_id").(float64)
 	memberType, err := s.RepoMember.FindMemberTypeById(uint(memberId))
@@ -92,7 +102,7 @@ func (s MemberServiceImpl) StoreMemberJoin(ctx echo.Context, request *dto.Member
 		return nil, err
 	}
 
-	invoiceNo := fmt.Sprintf("INV-%s", strings.ToUpper(random.String(16)))
+	invoiceNo := fmt.Sprintf("INVM-%s", strings.ToUpper(random.String(16)))
 	memberJoin, err := s.RepoMember.InsertMemberJoin(&entity.MemberJoin{
 		MemberTypeID:       request.MemberType,
 		MemberID:           uint(memberId),
@@ -145,7 +155,7 @@ func (s MemberServiceImpl) Login(request *dto.MemberLoginRequest) (*dto.MemberAu
 		"exp":  time.Now().Add(time.Hour * 2).Unix(),
 	})
 
-	authResp := dto.CreateMemberAuthResponse(accessToken)
+	authResp := dto.CreateMemberAuthResponse(accessToken, member)
 
 	return &authResp, nil
 }
@@ -164,7 +174,7 @@ func (s MemberServiceImpl) Refresh(memberId uint) (*dto.MemberAuthResponse, erro
 		"exp":  time.Now().Add(time.Hour * 2).Unix(),
 	})
 
-	authResp := dto.CreateMemberAuthResponse(accessToken)
+	authResp := dto.CreateMemberAuthResponse(accessToken, member)
 
 	return &authResp, nil
 }

@@ -6,6 +6,7 @@ import (
 
 type MemberRepository interface {
 	FindAll() (*entity.MemberList, error)
+	FindAllJoinHistory(memberId uint) (*entity.MemberJoinList, error)
 	Find(memberId uint) (*entity.Member, error)
 	FindByEmail(email string) (*entity.Member, error)
 	FindMemberTypeById(memberTypeId uint) (*entity.MemberType, error)

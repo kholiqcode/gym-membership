@@ -14,9 +14,10 @@ type AdminResponse struct {
 }
 
 type AdminAuthResponse struct {
-	Type         string `json:"type,omitempty"`
-	Token        string `json:"token,omitempty"`
-	RefreshToken string `json:"refresh_token,omitempty"`
+	Type         string        `json:"type,omitempty"`
+	Token        string        `json:"token,omitempty"`
+	RefreshToken string        `json:"refresh_token,omitempty"`
+	Admin        AdminResponse `json:"admin,omitempty"`
 }
 
 type AdminListResponse []*AdminResponse

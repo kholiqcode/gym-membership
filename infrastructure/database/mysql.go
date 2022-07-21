@@ -108,6 +108,8 @@ func initMigrate(db *gorm.DB) {
 		&_memberEntity.Member{},
 		&_memberEntity.MemberType{},
 		&_memberEntity.MemberJoin{},
+		//&_memberOrderEntity.MemberOrder{},
+		//&_memberOrderEntity.MemberOrderDetail{},
 		&_trainerEntity.ClassCategory{},
 		&_classEntity.Class{},
 		&_classBookingEntity.ClassBooking{},

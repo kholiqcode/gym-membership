@@ -6,6 +6,7 @@ type ClassBookingResponse struct {
 	ID                 uint                          `json:"id,omitempty"`
 	InvoiceNo          string                        `json:"invoice_no,omitempty"`
 	PaymentMethod      string                        `json:"payment_method,omitempty"`
+	MemberID           uint                          `json:"member_id,omitempty"`
 	MemberName         string                        `json:"member_name,omitempty"`
 	MemberPhone        string                        `json:"member_phone,omitempty"`
 	MemberEmail        string                        `json:"member_email,omitempty"`
@@ -27,9 +28,9 @@ type ClassBookingDetailResponse struct {
 	ClassCategory    uint      `json:"class_category,omitempty"`
 	ClassImage       string    `json:"class_image,omitempty"`
 	ClassPrice       float64   `json:"class_price,omitempty"`
-	ClassDate        time.Time `json:"class_date,omitempty"`
-	ClassStartTime   time.Time `json:"class_start_time,omitempty"`
-	ClassEndTime     time.Time `json:"class_end_time,omitempty"`
+	ClassDate        string    `json:"class_date,omitempty"`
+	ClassStartTime   string    `json:"class_start_time,omitempty"`
+	ClassEndTime     string    `json:"class_end_time,omitempty"`
 	ClassTrainerName string    `json:"class_trainer_name,omitempty"`
 	CreatedAt        time.Time `json:"created_at,omitempty"`
 	UpdatedAt        time.Time `json:"updated_at,omitempty"`

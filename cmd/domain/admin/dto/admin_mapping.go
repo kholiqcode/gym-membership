@@ -25,10 +25,18 @@ func CreateAdminListResponse(admins *entity.AdminList) AdminListResponse {
 	return adminResp
 }
 
-func CreateAdminAuthResponse(token dto.AccessToken) AdminAuthResponse {
+func CreateAdminAuthResponse(token dto.AccessToken, admin *entity.Admin) AdminAuthResponse {
 	return AdminAuthResponse{
 		Type:         token.Type,
 		Token:        token.Token,
 		RefreshToken: token.RefreshToken,
+		Admin: AdminResponse{
+			ID:        admin.ID,
+			Name:      admin.Name,
+			Phone:     admin.Phone,
+			Email:     admin.Email,
+			CreatedAt: admin.CreatedAt,
+			UpdatedAt: admin.UpdatedAt,
+		},
 	}
 }
