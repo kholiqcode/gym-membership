@@ -1,123 +1,123 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
-  version: '1.0'
+  version: "1.0"
   title: Gym
   contact: {}
 host: gym.stack.co.id
 basePath: /
 securityDefinitions: {}
 schemes:
-- https
+  - https
 consumes:
-- application/json
+  - application/json
 produces:
-- application/json
+  - application/json
 paths:
   /member:
     get:
       summary: Get User
       tags:
-      - Member
+        - Member
       operationId: GetUser
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
       responses:
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/GetUser1'
+            $ref: "#/definitions/GetUser1"
           examples:
             application/json:
               code: 401
               message: token expired
               result: null
-        '200':
+        "200":
           description: OK
           schema:
-            $ref: '#/definitions/GetUser2'
+            $ref: "#/definitions/GetUser2"
           examples:
             application/json:
               code: 200
               message: Success
               result:
                 members:
-                - id: 1
-                  name: Abdul Kholiq
-                  email: kholiqdev@icloud.com
-                  created_at: 2022-06-12T20:25:38Z
-                  updated_at: 2022-06-12T20:25:38Z
-                - id: 3
-                  name: Abdul Kholiq
-                  email: kholiqdev12@icloud.com
-                  created_at: 2022-06-15T12:12:52Z
-                  updated_at: 2022-06-15T12:12:52Z
-                - id: 5
-                  name: Maharani
-                  email: rani@gmail.com
-                  created_at: 2022-06-29T16:52:09Z
-                  updated_at: 2022-06-29T16:52:09Z
+                  - id: 1
+                    name: Abdul Kholiq
+                    email: kholiqdev@icloud.com
+                    created_at: 2022-06-12T20:25:38Z
+                    updated_at: 2022-06-12T20:25:38Z
+                  - id: 3
+                    name: Abdul Kholiq
+                    email: kholiqdev12@icloud.com
+                    created_at: 2022-06-15T12:12:52Z
+                    updated_at: 2022-06-15T12:12:52Z
+                  - id: 5
+                    name: Maharani
+                    email: rani@gmail.com
+                    created_at: 2022-06-29T16:52:09Z
+                    updated_at: 2022-06-29T16:52:09Z
   /member/{id}:
     delete:
       summary: Delete Member
       tags:
-      - Member
+        - Member
       operationId: DeleteMember
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: id
-        in: path
-        description: "Member id to delete"
-        required: true
-        type: "integer"
-        format: "int64"
+        - name: id
+          in: path
+          description: "Member id to delete"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
-        '200':
+        "200":
           description: Success Delete
           schema:
-            $ref: '#/definitions/DeleteMember1'
-        '400':
+            $ref: "#/definitions/DeleteMember1"
+        "400":
           description: Bad Response
           schema:
-            $ref: '#/definitions/DeleteMember2'
+            $ref: "#/definitions/DeleteMember2"
   /member/auth/register:
     post:
       summary: Register
       tags:
-      - Member
+        - Member
       operationId: Register
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/RegisterRequest'
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/RegisterRequest"
       responses:
-        '400':
+        "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/Register1'
+            $ref: "#/definitions/Register1"
           examples:
             application/json:
               code: 400
               message: "Error 1062: Duplicate entry 'kholiqdev@icloud.com' for key 'members.email'"
               result: null
-        '201':
+        "201":
           description: Created
           schema:
-            $ref: '#/definitions/Register2'
+            $ref: "#/definitions/Register2"
           examples:
             application/json:
               code: 201
@@ -133,23 +133,23 @@ paths:
     post:
       summary: Login
       tags:
-      - Member
+        - Member
       operationId: Login
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/LoginRequest'
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/LoginRequest"
       responses:
-        '200':
+        "200":
           description: OK
           schema:
-            $ref: '#/definitions/Login'
+            $ref: "#/definitions/Login"
           examples:
             application/json:
               code: 200
@@ -158,10 +158,10 @@ paths:
                 type: Bearer
                 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6ImFjY2Vzc190b2tlbiJ9.x1GKs3VvxfdOeTOHJRsHYU-aQDOpG7JfUcZkLvAMO3E
                 refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg1NTIsImlhdCI6MTY1NjUyMTM1MiwiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4ifQ.1yhQIErbmzZSnjLuNTZ0KC1kBZ3ay-TShwmd7sXpeCQ
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/Login2'
+            $ref: "#/definitions/Login2"
           examples:
             application/json:
               code: 401
@@ -173,23 +173,23 @@ paths:
     post:
       summary: Refresh
       tags:
-      - Member
+        - Member
       operationId: Refresh
       deprecated: false
       produces:
-      - application/json
-      - application/json; charset=UTF-8
+        - application/json
+        - application/json; charset=UTF-8
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
       responses:
-        '200':
+        "200":
           description: OK
           schema:
-            $ref: '#/definitions/Refresh'
+            $ref: "#/definitions/Refresh"
           examples:
             application/json:
               code: 200
@@ -199,10 +199,10 @@ paths:
                 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg5NTMsImlhdCI6MTY1NjUyMTc1MywiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6ImFjY2Vzc190b2tlbiJ9.j_TTm4xG_RJZBWhEEDcPz-LwXgN2kRQyX6G3YKffxnI
                 refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1Mjg5NTMsImlhdCI6MTY1NjUyMTc1MywiaWQiOjEsIm5hbWUiOiJBYmR1bCBLaG9saXEiLCJyb2xlIjoibWVtYmVyIiwidG9rZW5fdHlwZSI6InJlZnJlc2hfdG9rZW4ifQ.PSrOY7sjIz3VWpNg9mrfzcylq416I43wB85YVsTLlIA
           headers: {}
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/Refresh2'
+            $ref: "#/definitions/Refresh2"
           examples:
             application/json; charset=UTF-8:
               message: invalid or expired jwt
@@ -211,17 +211,17 @@ paths:
     get:
       summary: Detail
       tags:
-      - Member
+        - Member
       operationId: Detail
       deprecated: false
       produces:
-      - application/json; charset=UTF-8
+        - application/json; charset=UTF-8
       parameters: []
       responses:
-        '404':
+        "404":
           description: Not Found
           schema:
-            $ref: '#/definitions/Detail1'
+            $ref: "#/definitions/Detail1"
           examples:
             application/json; charset=UTF-8:
               message: Not Found
@@ -230,28 +230,28 @@ paths:
     post:
       summary: Join
       tags:
-      - Member
+        - Member
       operationId: Join
       deprecated: false
       produces:
-      - application/json; charset=UTF-8
+        - application/json; charset=UTF-8
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/JoinRequest'
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/JoinRequest"
       responses:
-        '405':
+        "405":
           description: Method Not Allowed
           schema:
-            $ref: '#/definitions/Join1'
+            $ref: "#/definitions/Join1"
           examples:
             application/json; charset=UTF-8:
               message: Method Not Allowed
@@ -259,61 +259,86 @@ paths:
     put:
       summary: Update Member Detail
       tags:
-      - Member
+        - Member
       operationId: UpdateMemberDetail
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: id
-        in: "path"
-        description: "Id that need to be updated"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "body"
-        description: "Updated Member"
-        required: true
-        schema:
-          $ref: '#/definitions/MemberRequest'
+        - name: id
+          in: "path"
+          description: "Id that need to be updated"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Updated Member"
+          required: true
+          schema:
+            $ref: "#/definitions/MemberRequest"
       responses:
-        '200':
+        "200":
           description: Success Update
           schema:
-            $ref: '#/definitions/UpdateMember1'
-        '400':
+            $ref: "#/definitions/UpdateMember1"
+        "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/UpdateMember2'
+            $ref: "#/definitions/UpdateMember2"
+  /member/join/history:
+    get:
+      summary: Join History
+      tags:
+        - Member
+      operationId: JoinHistory
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+      responses:
+        "400":
+          description: Bad Request
+          schema:
+            $ref: "#/definitions/JoinHistory1"
+          examples:
+            application/json:
+              code: 400
+              message: 'strconv.Atoi: parsing "join/history": invalid syntax'
+              result: null
   /admin/user/list:
     get:
       summary: User List
       tags:
-      - User
+        - User
       operationId: UserList
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
       responses:
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/userlist1'
+            $ref: "#/definitions/userlist1"
           examples:
             application/json:
               code: 401
               message: token expired
               result: null
-        '400':
+        "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/userlist1'
+            $ref: "#/definitions/userlist1"
           examples:
             application/json:
               code: 400
@@ -323,52 +348,52 @@ paths:
     get:
       summary: Get Admin
       tags:
-      - Admin
+        - Admin
       operationId: GetAdmin
       deprecated: false
       produces:
-      - application/json
-      - application/json; charset=UTF-8
+        - application/json
+        - application/json; charset=UTF-8
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
       responses:
-        '200':
+        "200":
           description: OK
           schema:
-            $ref: '#/definitions/GetAdmin'
+            $ref: "#/definitions/GetAdmin"
           examples:
             application/json:
               code: 200
               message: Success
               result:
                 admins:
-                - id: 1
-                  name: Admin
-                  phone: '089647583033'
-                  email: admin@mail.com
-                  created_at: 2022-06-12T20:14:28Z
-                  updated_at: 2022-06-12T20:14:28Z
-                - id: 2
-                  name: Admin
-                  phone: '089647583033'
-                  email: admin12@mail.com
-                  created_at: 2022-06-15T12:13:52Z
-                  updated_at: 2022-06-15T12:13:52Z
-        '401':
+                  - id: 1
+                    name: Admin
+                    phone: "089647583033"
+                    email: admin@mail.com
+                    created_at: 2022-06-12T20:14:28Z
+                    updated_at: 2022-06-12T20:14:28Z
+                  - id: 2
+                    name: Admin
+                    phone: "089647583033"
+                    email: admin12@mail.com
+                    created_at: 2022-06-15T12:13:52Z
+                    updated_at: 2022-06-15T12:13:52Z
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/GetAdmin2'
+            $ref: "#/definitions/GetAdmin2"
           examples:
             application/json; charset=UTF-8:
               message: invalid or expired jwt
-        '400':
+        "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/GetAdmin2'
+            $ref: "#/definitions/GetAdmin2"
           examples:
             application/json; charset=UTF-8:
               message: missing or malformed jwt
@@ -376,37 +401,37 @@ paths:
     post:
       summary: Create Member Type
       tags:
-      - Admin
+        - Admin
       operationId: CreateMemberType
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/CreateMemberTypeRequest'
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/CreateMemberTypeRequest"
       responses:
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/CreateMemberType1'
+            $ref: "#/definitions/CreateMemberType1"
           examples:
             application/json:
               code: 401
               message: token expired
               result: null
-        '201':
+        "201":
           description: Created
           schema:
-            $ref: '#/definitions/CreateMemberType2'
+            $ref: "#/definitions/CreateMemberType2"
           examples:
             application/json:
               code: 201
@@ -422,23 +447,23 @@ paths:
     post:
       summary: Login
       tags:
-      - Admin
+        - Admin
       operationId: PostLogin
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/LoginRequest'
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/LoginRequest"
       responses:
-        '200':
+        "200":
           description: OK
           schema:
-            $ref: '#/definitions/Login'
+            $ref: "#/definitions/Login"
           examples:
             application/json:
               code: 200
@@ -447,10 +472,10 @@ paths:
                 type: Bearer
                 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1MjkyNDgsImlhdCI6MTY1NjUyMjA0OCwiaWQiOjEsIm5hbWUiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsInRva2VuX3R5cGUiOiJhY2Nlc3NfdG9rZW4ifQ.9r8nNMpnqgX7huhj7sW_MZieEBVPECHFDOfPwCMMPS0
                 refresh_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTY1MjkyNDgsImlhdCI6MTY1NjUyMjA0OCwiaWQiOjEsIm5hbWUiOiJBZG1pbiIsInJvbGUiOiJhZG1pbiIsInRva2VuX3R5cGUiOiJyZWZyZXNoX3Rva2VuIn0.qbA1oRZVYQ9WMGXTISjNmuzGzBRUhYodWSUTE2OICZI
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/Login2'
+            $ref: "#/definitions/Login2"
           examples:
             application/json:
               code: 401
@@ -461,17 +486,17 @@ paths:
     get:
       summary: Detail
       tags:
-      - Admin
+        - Admin
       operationId: GetDetail
       deprecated: false
       produces:
-      - application/json; charset=UTF-8
+        - application/json; charset=UTF-8
       parameters: []
       responses:
-        '400':
+        "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/Detail1'
+            $ref: "#/definitions/Detail1"
           examples:
             application/json; charset=UTF-8:
               message: missing or malformed jwt
@@ -480,77 +505,77 @@ paths:
     post:
       summary: Create Class
       tags:
-      - Admin
+        - Admin
       operationId: CreateClass
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/CreateClassRequest'
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/CreateClassRequest"
       responses:
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/CreateClass1'
+            $ref: "#/definitions/CreateClass1"
           examples:
             application/json:
               code: 401
               message: token expired
               result: null
-        '400':
+        "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/CreateClass1'
+            $ref: "#/definitions/CreateClass1"
           examples:
             application/json:
               code: 400
-              message: 'Error 1452: Cannot add or update a child row: a foreign key constraint fails (`gym`.`classes`, CONSTRAINT `fk_classes_class_category` FOREIGN KEY (`class_category_id`) REFERENCES `class_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)'
+              message: "Error 1452: Cannot add or update a child row: a foreign key constraint fails (`gym`.`classes`, CONSTRAINT `fk_classes_class_category` FOREIGN KEY (`class_category_id`) REFERENCES `class_categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)"
               result: null
   /admin/class-category/create:
     post:
       summary: Create Class Category
       tags:
-      - Admin
+        - Admin
       operationId: CreateClassCategory
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/CreateClassCategoryRequest'
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/CreateClassCategoryRequest"
       responses:
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/CreateClassCategory1'
+            $ref: "#/definitions/CreateClassCategory1"
           examples:
             application/json:
               code: 401
               message: token expired
               result: null
-        '201':
+        "201":
           description: Created
           schema:
-            $ref: '#/definitions/CreateClassCategory2'
+            $ref: "#/definitions/CreateClassCategory2"
           examples:
             application/json:
               code: 201
@@ -563,23 +588,23 @@ paths:
     post:
       summary: Create New Admin
       tags:
-      - Admin
+        - Admin
       operationId: CreateNewAdmin
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/CreateNewAdminRequest'
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/CreateNewAdminRequest"
       responses:
-        '201':
+        "201":
           description: Created
           schema:
-            $ref: '#/definitions/CreateNewAdmin'
+            $ref: "#/definitions/CreateNewAdmin"
           examples:
             application/json:
               code: 201
@@ -587,7 +612,7 @@ paths:
               result:
                 id: 3
                 name: Admin2
-                phone: '0896287363'
+                phone: "0896287363"
                 email: admin2@mail.com
                 created_at: 2022-06-29T17:11:26.185Z
                 updated_at: 2022-06-29T17:11:26.185Z
@@ -596,23 +621,23 @@ paths:
     get:
       summary: Get Class Category
       tags:
-      - Admin
+        - Admin
       operationId: GetClassCategory
       deprecated: false
       produces:
-      - application/json
-      - application/json; charset=UTF-8
+        - application/json
+        - application/json; charset=UTF-8
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
       responses:
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/GetClassCategory1'
+            $ref: "#/definitions/GetClassCategory1"
           examples:
             application/json:
               code: 401
@@ -620,10 +645,10 @@ paths:
               result: null
             application/json; charset=UTF-8:
               message: invalid or expired jwt
-        '200':
+        "200":
           description: OK
           schema:
-            $ref: '#/definitions/GetClassCategory2'
+            $ref: "#/definitions/GetClassCategory2"
           examples:
             application/json:
               code: 200
@@ -631,9 +656,9 @@ paths:
               result:
                 class_category:
                   data:
-                  - id: 1
-                    name: push down
-                    slug: push-down
+                    - id: 1
+                      name: push down
+                      slug: push-down
                   page: 1
                   page_size: 10
                   sort: Id desc
@@ -643,77 +668,77 @@ paths:
     delete:
       summary: Delete Admin
       tags:
-      - Admin
+        - Admin
       operationId: DeleteAdmin
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: id
-        in: path
-        description: "Admin id to delete"
-        required: true
-        type: "integer"
-        format: "int64"
+        - name: id
+          in: path
+          description: "Admin id to delete"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
-        '200':
+        "200":
           description: Success Delete
           schema:
-            $ref: '#/definitions/DeleteAdmin1'
-        '400':
+            $ref: "#/definitions/DeleteAdmin1"
+        "400":
           description: Bad Response
           schema:
-            $ref: '#/definitions/DeleteAdmin2'
+            $ref: "#/definitions/DeleteAdmin2"
     put:
       summary: Update Admin
       tags:
-      - Admin
+        - Admin
       operationId: UpdateAdmin
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: id
-        in: "path"
-        description: "Id that need to be updated"
-        required: true
-        type: "string"
-      - in: "body"
-        name: "body"
-        description: "Updated Admin"
-        required: true
-        schema:
-          $ref: '#/definitions/AdminRequest'
+        - name: id
+          in: "path"
+          description: "Id that need to be updated"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Updated Admin"
+          required: true
+          schema:
+            $ref: "#/definitions/AdminRequest"
       responses:
-        '200':
+        "200":
           description: Success Update
           schema:
-            $ref: '#/definitions/UpdateAdmin1'
-        '400':
+            $ref: "#/definitions/UpdateAdmin1"
+        "400":
           description: Bad Request
           schema:
-            $ref: '#/definitions/UpdateAdmin2'
+            $ref: "#/definitions/UpdateAdmin2"
   /class:
     get:
       summary: Get Class
       tags:
-      - Class
+        - Class
       operationId: GetClass
       deprecated: false
       produces:
-      - application/json
-      - application/json; charset=UTF-8
+        - application/json
+        - application/json; charset=UTF-8
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
       responses:
-        '200':
+        "200":
           description: OK
           schema:
-            $ref: '#/definitions/GetClass'
+            $ref: "#/definitions/GetClass"
           examples:
             application/json:
               code: 200
@@ -721,30 +746,30 @@ paths:
               result:
                 classes:
                   data:
-                  - class_category_id: 1
-                    trainer_name: Sofyan
-                    id: 4
-                    name: Class 3
-                    description: Halos
-                    price: 10000
-                    meet_link: http://google.com
-                    image: http://google.com
-                    date: 2022-06-18T00:00:00Z
-                    start_time: 09:30:00
-                    end_time: 11:00:00
-                    is_offline: true
-                    category_name: push down
-                    created_at: 2022-07-11T00:52:56Z
-                    updated_at: 2022-07-11T00:52:56Z
+                    - class_category_id: 1
+                      trainer_name: Sofyan
+                      id: 4
+                      name: Class 3
+                      description: Halos
+                      price: 10000
+                      meet_link: http://google.com
+                      image: http://google.com
+                      date: 2022-06-18T00:00:00Z
+                      start_time: 09:30:00
+                      end_time: 11:00:00
+                      is_offline: true
+                      category_name: push down
+                      created_at: 2022-07-11T00:52:56Z
+                      updated_at: 2022-07-11T00:52:56Z
                   page: 1
                   page_size: 10
                   sort: Id desc
                   total_page: 1
                   total_rows: 1
-        '401':
+        "401":
           description: Unauthorized
           schema:
-            $ref: '#/definitions/GetClass2'
+            $ref: "#/definitions/GetClass2"
           examples:
             application/json; charset=UTF-8:
               message: invalid or expired jwt
@@ -752,261 +777,127 @@ paths:
     delete:
       summary: delete class
       tags:
-      - Class
+        - Class
       operationId: deleteclass
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: id
-        in: path
-        description: "class id to delete"
-        required: true
-        type: "integer"
-        format: "int64"
+        - name: id
+          in: path
+          description: "class id to delete"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
-        '200':
+        "200":
           description: Success Delete
           schema:
-            $ref: '#/definitions/Deleteclass1'
-        '400':
+            $ref: "#/definitions/Deleteclass1"
+        "400":
           description: Bad Response
           schema:
-            $ref: '#/definitions/Deleteclass2'
+            $ref: "#/definitions/Deleteclass2"
     put:
       summary: Update Class
       tags:
-      - Class
+        - Class
       operationId: UpdateClass
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: id
-        in: path
-        description: "class id to update"
-        required: true
-        type: "integer"
-        format: "int64"
+        - name: id
+          in: path
+          description: "class id to update"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
-        '200':
+        "200":
           description: Success Delete
           schema:
-            $ref: '#/definitions/Updateclass1'
-        '400':
+            $ref: "#/definitions/Updateclass1"
+        "400":
           description: Bad Response
           schema:
-            $ref: '#/definitions/Updateclass2'
-  /transaction:
+            $ref: "#/definitions/Updateclass2"
+
+  /class/order:
     post:
-      summary: Add Transaction
+      summary: Order
       tags:
-      - Transaction
-      operationId: AddTransaction
+        - ClassBooking
+      operationId: Order
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/OrderRequest"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
+  /class/order/history:
     get:
-      summary: Get All Transaction
+      summary: Order History
       tags:
-      - Transaction
-      operationId: GetAllTransaction
+        - ClassBooking
+      operationId: OrderHistory
       deprecated: false
       produces:
-      - application/json
-      parameters:
+        - application/json
+    parameters:
       - name: Authorization
         in: header
         required: false
         default: Bearer {token}
         type: string
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /transaction/id:
-    get:
-      summary: Get Transaction By Id
-      tags:
-      - Transaction
-      operationId: GetTransactionById
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /transaction/{id}:
-    put:
-      summary: Update Transaction Status
-      tags:
-      - Transaction
-      operationId: UpdateTransactionStatus
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: id
-        in: path
-        description: "class id to update"
+      - name: page
+        in: query
         required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        '200':
-          description: Success Delete
-          schema:
-            $ref: '#/definitions/Updatetransaction1'
-        '400':
-          description: Bad Response
-          schema:
-            $ref: '#/definitions/Updatetransaction2'
-    delete:
-      summary: Delete Transaction
-      tags:
-      - Transaction
-      operationId: DeleteTransaction
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: id
-        in: path
-        description: "class id to update"
+        type: integer
+        format: int32
+        description: ""
+      - name: pageSize
+        in: query
         required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        '200':
-          description: Success Delete
-          schema:
-            $ref: '#/definitions/Deletetransaction1'
-        '400':
-          description: Bad Response
-          schema:
-            $ref: '#/definitions/Deletetransaction2'
-  /payment/methode:
-    post:
-      summary: Add Payment Methode
-      tags:
-      - Payment Methode
-      operationId: AddPaymentMethode
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      responses:
-        '200':
-          description: ''
-          headers: {}
-    get:
-      summary: Get All Payment
-      tags:
-      - Payment Methode
-      operationId: GetAllPayment
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /payment/methode/id:
-    get:
-      summary: Get Payment Methode By Id
-      tags:
-      - Payment Methode
-      operationId: GetPaymentMethodeById
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      responses:
-        '200':
-          description: ''
-          headers: {}
-  /payment/methode/{id}:
-    put:
-      summary: Update Payment Methode
-      tags:
-      - Payment Methode
-      operationId: UpdatePaymentMethode
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: id
-        in: path
-        description: "class id to update"
+        type: integer
+        format: int32
+        description: ""
+      - name: sortBy
+        in: query
         required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        '200':
-          description: Success Delete
-          schema:
-            $ref: '#/definitions/UpdatepayMethode1'
-        '400':
-          description: Bad Response
-          schema:
-            $ref: '#/definitions/UpdatepayMethode2'
-    delete:
-      summary: Delete Payment Methode
-      tags:
-      - Payment Methode
-      operationId: DeletePaymentMethode
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: id
-        in: path
-        description: "class id to update"
+        type: string
+        description: ""
+      - name: sortDesc
+        in: query
         required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        '200':
-          description: Success Delete
+        type: integer
+        format: int32
+        description: ""
+        responses:
+          "401":
+          description: Unauthorized
           schema:
-            $ref: '#/definitions/DeletepayMethode1'
-        '400':
-          description: Bad Response
-          schema:
-            $ref: '#/definitions/DeletepayMethode2'
+          $ref: "#/definitions/OrderHistory1"
+          examples:
+          application/json:
+            code: 401
+            message: token expired
+            result: null
+          headers: {}
+
 definitions:
   GetUser1:
     title: GetUser1
@@ -1024,9 +915,9 @@ definitions:
       result:
         type: string
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   GetUser2:
     title: GetUser2
     example:
@@ -1034,6 +925,56 @@ definitions:
       message: Success
       result:
         members:
+          - id: 1
+            name: Abdul Kholiq
+            email: kholiqdev@icloud.com
+            created_at: 2022-06-12T20:25:38Z
+            updated_at: 2022-06-12T20:25:38Z
+          - id: 3
+            name: Abdul Kholiq
+            email: kholiqdev12@icloud.com
+            created_at: 2022-06-15T12:12:52Z
+            updated_at: 2022-06-15T12:12:52Z
+          - id: 5
+            name: Maharani
+            email: rani@gmail.com
+            created_at: 2022-06-29T16:52:09Z
+            updated_at: 2022-06-29T16:52:09Z
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      result:
+        $ref: "#/definitions/Result"
+    required:
+      - code
+      - message
+      - result
+  DeleteMember1:
+    type: object
+    properties:
+      message:
+        type: string
+        example: Success Delete Member
+      rescode:
+        type: number
+        example: 200
+  DeleteMember2:
+    type: object
+    properties:
+      message:
+        type: string
+        example: Bad Request
+      rescode:
+        type: number
+        example: 400
+  Result:
+    title: Result
+    example:
+      members:
         - id: 1
           name: Abdul Kholiq
           email: kholiqdev@icloud.com
@@ -1051,62 +992,12 @@ definitions:
           updated_at: 2022-06-29T16:52:09Z
     type: object
     properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      result:
-        $ref: '#/definitions/Result'
-    required:
-    - code
-    - message
-    - result
-  DeleteMember1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Delete Member
-        rescode:
-          type: number
-          example: 200
-  DeleteMember2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-  Result:
-    title: Result
-    example:
-      members:
-      - id: 1
-        name: Abdul Kholiq
-        email: kholiqdev@icloud.com
-        created_at: 2022-06-12T20:25:38Z
-        updated_at: 2022-06-12T20:25:38Z
-      - id: 3
-        name: Abdul Kholiq
-        email: kholiqdev12@icloud.com
-        created_at: 2022-06-15T12:12:52Z
-        updated_at: 2022-06-15T12:12:52Z
-      - id: 5
-        name: Maharani
-        email: rani@gmail.com
-        created_at: 2022-06-29T16:52:09Z
-        updated_at: 2022-06-29T16:52:09Z
-    type: object
-    properties:
       members:
         type: array
         items:
-          $ref: '#/definitions/Member'
+          $ref: "#/definitions/Member"
     required:
-    - members
+      - members
   Member:
     title: Member
     example:
@@ -1129,49 +1020,69 @@ definitions:
       updated_at:
         type: string
     required:
-    - id
-    - name
-    - email
-    - created_at
-    - updated_at
-    
+      - id
+      - name
+      - email
+      - created_at
+      - updated_at
+
+  JoinHistory1:
+    title: JoinHistory1
+    example:
+      code: 400
+      message: 'strconv.Atoi: parsing "join/history": invalid syntax'
+      result: null
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      result:
+        type: string
+    required:
+      - code
+      - message
+      - result
+
   MemberRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Name
-        phone:
-          type: number
-          example: 0987654435678
-        email:
-          type: string
-          example: email@gmail.com
-  
+    type: object
+    properties:
+      name:
+        type: string
+        example: Name
+      phone:
+        type: number
+        example: 0987654435678
+      email:
+        type: string
+        example: email@gmail.com
+
   UpdateMember1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Update Member
-        rescode:
-          type: number
-          example: 200
+    type: object
+    properties:
+      message:
+        type: string
+        example: Success Update Member
+      rescode:
+        type: number
+        example: 200
   UpdateMember2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-    
+    type: object
+    properties:
+      message:
+        type: string
+        example: Bad Request
+      rescode:
+        type: number
+        example: 400
+
   RegisterRequest:
     title: RegisterRequest
     example:
       name: Maharani
-      phone: '08781928349'
+      phone: "08781928349"
       email: rani@gmail.com
       password: password123
     type: object
@@ -1185,10 +1096,10 @@ definitions:
       password:
         type: string
     required:
-    - name
-    - phone
-    - email
-    - password
+      - name
+      - phone
+      - email
+      - password
   Register1:
     title: Register1
     example:
@@ -1205,9 +1116,9 @@ definitions:
       result:
         type: string
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   Register2:
     title: Register2
     example:
@@ -1227,11 +1138,11 @@ definitions:
       message:
         type: string
       result:
-        $ref: '#/definitions/Result1'
+        $ref: "#/definitions/Result1"
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   Result1:
     title: Result1
     example:
@@ -1254,11 +1165,11 @@ definitions:
       updated_at:
         type: string
     required:
-    - id
-    - name
-    - email
-    - created_at
-    - updated_at
+      - id
+      - name
+      - email
+      - created_at
+      - updated_at
   LoginRequest:
     title: LoginRequest
     example:
@@ -1271,8 +1182,8 @@ definitions:
       password:
         type: string
     required:
-    - email
-    - password
+      - email
+      - password
   Login:
     title: Login
     example:
@@ -1290,11 +1201,11 @@ definitions:
       message:
         type: string
       result:
-        $ref: '#/definitions/Result2'
+        $ref: "#/definitions/Result2"
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   Result2:
     title: Result2
     example:
@@ -1310,9 +1221,9 @@ definitions:
       refresh_token:
         type: string
     required:
-    - type
-    - token
-    - refresh_token
+      - type
+      - token
+      - refresh_token
   Login2:
     title: Login2
     example:
@@ -1329,9 +1240,9 @@ definitions:
       result:
         type: string
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   Refresh:
     title: Refresh
     example:
@@ -1349,11 +1260,11 @@ definitions:
       message:
         type: string
       result:
-        $ref: '#/definitions/Result2'
+        $ref: "#/definitions/Result2"
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   Refresh2:
     title: Refresh2
     example:
@@ -1363,7 +1274,7 @@ definitions:
       message:
         type: string
     required:
-    - message
+      - message
   Detail1:
     title: Detail1
     example:
@@ -1373,20 +1284,20 @@ definitions:
       message:
         type: string
     required:
-    - message
+      - message
   JoinRequest:
     title: JoinRequest
     example:
       member_type_id: 1
       start_at: 2022-06-18
-      nik: '350919191806999003'
+      nik: "350919191806999003"
       name: Abdul Kholiq
       gender: L
       address: jln ahmad yani 6 jember
       city: jember
-      postal_code: '680137'
+      postal_code: "680137"
       email: kholiqdev@icloud.com
-      phone: '0896475830303'
+      phone: "0896475830303"
     type: object
     properties:
       member_type_id:
@@ -1411,16 +1322,16 @@ definitions:
       phone:
         type: string
     required:
-    - member_type_id
-    - start_at
-    - nik
-    - name
-    - gender
-    - address
-    - city
-    - postal_code
-    - email
-    - phone
+      - member_type_id
+      - start_at
+      - nik
+      - name
+      - gender
+      - address
+      - city
+      - postal_code
+      - email
+      - phone
   Join1:
     title: Join1
     example:
@@ -1430,27 +1341,27 @@ definitions:
       message:
         type: string
     required:
-    - message
-    
+      - message
+
   UpdateAdmin1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Update Member
-        rescode:
-          type: number
-          example: 200
+    type: object
+    properties:
+      message:
+        type: string
+        example: Success Update Member
+      rescode:
+        type: number
+        example: 200
   UpdateAdmin2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-    
+    type: object
+    properties:
+      message:
+        type: string
+        example: Bad Request
+      rescode:
+        type: number
+        example: 400
+
   userlist1:
     title: userlist1
     example:
@@ -1467,9 +1378,9 @@ definitions:
       result:
         type: string
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   GetAdmin:
     title: GetAdmin
     example:
@@ -1477,18 +1388,18 @@ definitions:
       message: Success
       result:
         admins:
-        - id: 1
-          name: Admin
-          phone: '089647583033'
-          email: admin@mail.com
-          created_at: 2022-06-12T20:14:28Z
-          updated_at: 2022-06-12T20:14:28Z
-        - id: 2
-          name: Admin
-          phone: '089647583033'
-          email: admin12@mail.com
-          created_at: 2022-06-15T12:13:52Z
-          updated_at: 2022-06-15T12:13:52Z
+          - id: 1
+            name: Admin
+            phone: "089647583033"
+            email: admin@mail.com
+            created_at: 2022-06-12T20:14:28Z
+            updated_at: 2022-06-12T20:14:28Z
+          - id: 2
+            name: Admin
+            phone: "089647583033"
+            email: admin12@mail.com
+            created_at: 2022-06-15T12:13:52Z
+            updated_at: 2022-06-15T12:13:52Z
     type: object
     properties:
       code:
@@ -1497,41 +1408,41 @@ definitions:
       message:
         type: string
       result:
-        $ref: '#/definitions/Result4'
+        $ref: "#/definitions/Result4"
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   Result4:
     title: Result4
     example:
       admins:
-      - id: 1
-        name: Admin
-        phone: '089647583033'
-        email: admin@mail.com
-        created_at: 2022-06-12T20:14:28Z
-        updated_at: 2022-06-12T20:14:28Z
-      - id: 2
-        name: Admin
-        phone: '089647583033'
-        email: admin12@mail.com
-        created_at: 2022-06-15T12:13:52Z
-        updated_at: 2022-06-15T12:13:52Z
+        - id: 1
+          name: Admin
+          phone: "089647583033"
+          email: admin@mail.com
+          created_at: 2022-06-12T20:14:28Z
+          updated_at: 2022-06-12T20:14:28Z
+        - id: 2
+          name: Admin
+          phone: "089647583033"
+          email: admin12@mail.com
+          created_at: 2022-06-15T12:13:52Z
+          updated_at: 2022-06-15T12:13:52Z
     type: object
     properties:
       admins:
         type: array
         items:
-          $ref: '#/definitions/Admin'
+          $ref: "#/definitions/Admin"
     required:
-    - admins
+      - admins
   Admin:
     title: Admin
     example:
       id: 1
       name: Admin
-      phone: '089647583033'
+      phone: "089647583033"
       email: admin@mail.com
       created_at: 2022-06-12T20:14:28Z
       updated_at: 2022-06-12T20:14:28Z
@@ -1551,12 +1462,12 @@ definitions:
       updated_at:
         type: string
     required:
-    - id
-    - name
-    - phone
-    - email
-    - created_at
-    - updated_at
+      - id
+      - name
+      - phone
+      - email
+      - created_at
+      - updated_at
   GetAdmin2:
     title: GetAdmin2
     example:
@@ -1566,13 +1477,13 @@ definitions:
       message:
         type: string
     required:
-    - message
+      - message
   CreateMemberTypeRequest:
     title: CreateMemberTypeRequest
     example:
       name: Free
       description: Access Free Ccontent
-      image: ''
+      image: ""
       duration: 1
       price: 100000
     type: object
@@ -1590,11 +1501,11 @@ definitions:
         type: integer
         format: int32
     required:
-    - name
-    - description
-    - image
-    - duration
-    - price
+      - name
+      - description
+      - image
+      - duration
+      - price
   CreateMemberType1:
     title: CreateMemberType1
     example:
@@ -1611,9 +1522,9 @@ definitions:
       result:
         type: string
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   CreateMemberType2:
     title: CreateMemberType2
     example:
@@ -1634,11 +1545,11 @@ definitions:
       message:
         type: string
       result:
-        $ref: '#/definitions/Result5'
+        $ref: "#/definitions/Result5"
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   Result5:
     title: Result5
     example:
@@ -1665,12 +1576,12 @@ definitions:
       updated_at:
         type: string
     required:
-    - id
-    - name
-    - description
-    - price
-    - created_at
-    - updated_at
+      - id
+      - name
+      - description
+      - price
+      - created_at
+      - updated_at
   CreateClassRequest:
     title: CreateClassRequest
     example:
@@ -1719,19 +1630,19 @@ definitions:
       is_offline:
         type: boolean
     required:
-    - class_category_id
-    - trainer_name
-    - name
-    - description
-    - price
-    - meet_link
-    - category
-    - image
-    - date
-    - start_time
-    - end_time
-    - trainer_id
-    - is_offline
+      - class_category_id
+      - trainer_name
+      - name
+      - description
+      - price
+      - meet_link
+      - category
+      - image
+      - date
+      - start_time
+      - end_time
+      - trainer_id
+      - is_offline
   CreateClass1:
     title: CreateClass1
     example:
@@ -1748,9 +1659,9 @@ definitions:
       result:
         type: string
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   CreateClassCategoryRequest:
     title: CreateClassCategoryRequest
     example:
@@ -1760,7 +1671,7 @@ definitions:
       name:
         type: string
     required:
-    - name
+      - name
   CreateClassCategory1:
     title: CreateClassCategory1
     example:
@@ -1777,9 +1688,9 @@ definitions:
       result:
         type: string
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   CreateClassCategory2:
     title: CreateClassCategory2
     example:
@@ -1797,11 +1708,11 @@ definitions:
       message:
         type: string
       result:
-        $ref: '#/definitions/Result7'
+        $ref: "#/definitions/Result7"
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   Result7:
     title: Result7
     example:
@@ -1818,14 +1729,14 @@ definitions:
       slug:
         type: string
     required:
-    - id
-    - name
-    - slug
+      - id
+      - name
+      - slug
   CreateNewAdminRequest:
     title: CreateNewAdminRequest
     example:
       name: Admin
-      phone: '089647583033'
+      phone: "089647583033"
       email: admin@mail.com
       password: password
     type: object
@@ -1839,10 +1750,10 @@ definitions:
       password:
         type: string
     required:
-    - name
-    - phone
-    - email
-    - password
+      - name
+      - phone
+      - email
+      - password
   CreateNewAdmin:
     title: CreateNewAdmin
     example:
@@ -1851,7 +1762,7 @@ definitions:
       result:
         id: 3
         name: Admin2
-        phone: '0896287363'
+        phone: "0896287363"
         email: admin2@mail.com
         created_at: 2022-06-29T17:11:26.185Z
         updated_at: 2022-06-29T17:11:26.185Z
@@ -1863,17 +1774,17 @@ definitions:
       message:
         type: string
       result:
-        $ref: '#/definitions/Result8'
+        $ref: "#/definitions/Result8"
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   Result8:
     title: Result8
     example:
       id: 3
       name: Admin2
-      phone: '0896287363'
+      phone: "0896287363"
       email: admin2@mail.com
       created_at: 2022-06-29T17:11:26.185Z
       updated_at: 2022-06-29T17:11:26.185Z
@@ -1893,12 +1804,12 @@ definitions:
       updated_at:
         type: string
     required:
-    - id
-    - name
-    - phone
-    - email
-    - created_at
-    - updated_at
+      - id
+      - name
+      - phone
+      - email
+      - created_at
+      - updated_at
   GetClassCategory1:
     title: GetClassCategory1
     example:
@@ -1915,9 +1826,9 @@ definitions:
       result:
         type: string
     required:
-    - code
-    - message
-    - result
+      - code
+      - message
+      - result
   GetClassCategory2:
     title: GetClassCategory2
     example:
@@ -1926,9 +1837,9 @@ definitions:
       result:
         class_category:
           data:
-          - id: 1
-            name: push down
-            slug: push-down
+            - id: 1
+              name: push down
+              slug: push-down
           page: 1
           page_size: 10
           sort: Id desc
@@ -1942,130 +1853,91 @@ definitions:
       message:
         type: string
       result:
-        $ref: '#/definitions/Result9'
+        $ref: "#/definitions/Result9"
     required:
-    - code
-    - message
-    - result
-    
+      - code
+      - message
+      - result
+
   DeleteAdmin1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Delete Admin
-        rescode:
-          type: number
-          example: 200
+    type: object
+    properties:
+      message:
+        type: string
+        example: Success Delete Admin
+      rescode:
+        type: number
+        example: 200
   DeleteAdmin2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-  
+    type: object
+    properties:
+      message:
+        type: string
+        example: Bad Request
+      rescode:
+        type: number
+        example: 400
+
   AdminRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Name
-        phone:
-          type: number
-          example: 0987654435678
-        email:
-          type: string
-          example: email@gmail.com
-          
+    type: object
+    properties:
+      name:
+        type: string
+        example: Name
+      phone:
+        type: number
+        example: 0987654435678
+      email:
+        type: string
+        example: email@gmail.com
+
   Deleteclass1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Delete admin
-        rescode:
-          type: number
-          example: 200
-          
+    type: object
+    properties:
+      message:
+        type: string
+        example: Success Delete admin
+      rescode:
+        type: number
+        example: 200
+
   Deleteclass2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-          
+    type: object
+    properties:
+      message:
+        type: string
+        example: Bad Request
+      rescode:
+        type: number
+        example: 400
+
   Updateclass1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Update Member
-        rescode:
-          type: number
-          example: 200
+    type: object
+    properties:
+      message:
+        type: string
+        example: Success Update Member
+      rescode:
+        type: number
+        example: 200
   Updateclass2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-          
-  Deletetransaction1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Delete admin
-        rescode:
-          type: number
-          example: 200
-          
-  Deletetransaction2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-          
-  Updatetransaction1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Update Member
-        rescode:
-          type: number
-          example: 200
-  Updatetransaction2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-    
+    type: object
+    properties:
+      message:
+        type: string
+        example: Bad Request
+      rescode:
+        type: number
+        example: 400
+
   Result9:
     title: Result9
     example:
       class_category:
         data:
-        - id: 1
-          name: push down
-          slug: push-down
+          - id: 1
+            name: push down
+            slug: push-down
         page: 1
         page_size: 10
         sort: Id desc
@@ -2074,16 +1946,16 @@ definitions:
     type: object
     properties:
       class_category:
-        $ref: '#/definitions/ClassCategory'
+        $ref: "#/definitions/ClassCategory"
     required:
-    - class_category
+      - class_category
   ClassCategory:
     title: ClassCategory
     example:
       data:
-      - id: 1
-        name: push down
-        slug: push-down
+        - id: 1
+          name: push down
+          slug: push-down
       page: 1
       page_size: 10
       sort: Id desc
@@ -2094,7 +1966,7 @@ definitions:
       data:
         type: array
         items:
-          $ref: '#/definitions/Datum'
+          $ref: "#/definitions/Datum"
       page:
         type: integer
         format: int32
@@ -2110,12 +1982,12 @@ definitions:
         type: integer
         format: int32
     required:
-    - data
-    - page
-    - page_size
-    - sort
-    - total_page
-    - total_rows
+      - data
+      - page
+      - page_size
+      - sort
+      - total_page
+      - total_rows
   Datum:
     title: Datum
     example:
@@ -2132,9 +2004,9 @@ definitions:
       slug:
         type: string
     required:
-    - id
-    - name
-    - slug
+      - id
+      - name
+      - slug
   GetClassCategory4:
     title: GetClassCategory4
     example:
@@ -2144,7 +2016,7 @@ definitions:
       message:
         type: string
     required:
-    - message
+      - message
   GetClass:
     title: GetClass
     example:
@@ -2153,6 +2025,44 @@ definitions:
       result:
         classes:
           data:
+            - class_category_id: 1
+              trainer_name: Sofyan
+              id: 4
+              name: Class 3
+              description: Halos
+              price: 10000
+              meet_link: http://google.com
+              image: http://google.com
+              date: 2022-06-18T00:00:00Z
+              start_time: 09:30:00
+              end_time: 11:00:00
+              is_offline: true
+              category_name: push down
+              created_at: 2022-07-11T00:52:56Z
+              updated_at: 2022-07-11T00:52:56Z
+          page: 1
+          page_size: 10
+          sort: Id desc
+          total_page: 1
+          total_rows: 1
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      result:
+        $ref: "#/definitions/Result10"
+    required:
+      - code
+      - message
+      - result
+  Result10:
+    title: Result10
+    example:
+      classes:
+        data:
           - class_category_id: 1
             trainer_name: Sofyan
             id: 4
@@ -2168,29 +2078,21 @@ definitions:
             category_name: push down
             created_at: 2022-07-11T00:52:56Z
             updated_at: 2022-07-11T00:52:56Z
-          page: 1
-          page_size: 10
-          sort: Id desc
-          total_page: 1
-          total_rows: 1
+        page: 1
+        page_size: 10
+        sort: Id desc
+        total_page: 1
+        total_rows: 1
     type: object
     properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      result:
-        $ref: '#/definitions/Result10'
-    required:
-    - code
-    - message
-    - result
-  Result10:
-    title: Result10
-    example:
       classes:
-        data:
+        $ref: "#/definitions/Classes"
+    required:
+      - classes
+  Classes:
+    title: Classes
+    example:
+      data:
         - class_category_id: 1
           trainer_name: Sofyan
           id: 4
@@ -2206,36 +2108,6 @@ definitions:
           category_name: push down
           created_at: 2022-07-11T00:52:56Z
           updated_at: 2022-07-11T00:52:56Z
-        page: 1
-        page_size: 10
-        sort: Id desc
-        total_page: 1
-        total_rows: 1
-    type: object
-    properties:
-      classes:
-        $ref: '#/definitions/Classes'
-    required:
-    - classes
-  Classes:
-    title: Classes
-    example:
-      data:
-      - class_category_id: 1
-        trainer_name: Sofyan
-        id: 4
-        name: Class 3
-        description: Halos
-        price: 10000
-        meet_link: http://google.com
-        image: http://google.com
-        date: 2022-06-18T00:00:00Z
-        start_time: 09:30:00
-        end_time: 11:00:00
-        is_offline: true
-        category_name: push down
-        created_at: 2022-07-11T00:52:56Z
-        updated_at: 2022-07-11T00:52:56Z
       page: 1
       page_size: 10
       sort: Id desc
@@ -2246,7 +2118,7 @@ definitions:
       data:
         type: array
         items:
-          $ref: '#/definitions/Datum1'
+          $ref: "#/definitions/Datum1"
       page:
         type: integer
         format: int32
@@ -2262,12 +2134,12 @@ definitions:
         type: integer
         format: int32
     required:
-    - data
-    - page
-    - page_size
-    - sort
-    - total_page
-    - total_rows
+      - data
+      - page
+      - page_size
+      - sort
+      - total_page
+      - total_rows
   Datum1:
     title: Datum1
     example:
@@ -2322,61 +2194,62 @@ definitions:
       updated_at:
         type: string
     required:
-    - class_category_id
-    - trainer_name
-    - id
-    - name
-    - description
-    - price
-    - meet_link
-    - image
-    - date
-    - start_time
-    - end_time
-    - is_offline
-    - category_name
-    - created_at
-    - updated_at
-    
-  DeletepayMethode1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Delete Payment Methode
-        rescode:
-          type: number
-          example: 200
-          
-  DeletepayMethode2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-          
-  UpdatepayMethode1:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Success Update Payment Methode
-        rescode:
-          type: number
-          example: 200
-  UpdatepayMethode2:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Bad Request
-        rescode:
-          type: number
-          example: 400
-    
+      - class_category_id
+      - trainer_name
+      - id
+      - name
+      - description
+      - price
+      - meet_link
+      - image
+      - date
+      - start_time
+      - end_time
+      - is_offline
+      - category_name
+      - created_at
+      - updated_at
+  OrderRequest:
+    title: OrderRequest
+    example:
+      class_ids:
+        - 1
+      payment_method: BCA
+      note: test
+    type: object
+    properties:
+      class_ids:
+        type: array
+        items:
+          type: integer
+          format: int32
+      payment_method:
+        type: string
+      note:
+        type: string
+    required:
+      - class_ids
+      - payment_method
+      - note
+  OrderHistory1:
+    title: OrderHistory1
+    example:
+      code: 401
+      message: token expired
+      result: null
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      result:
+        type: string
+    required:
+      - code
+      - message
+      - result
   GetClass2:
     title: GetClass2
     example:
@@ -2386,12 +2259,11 @@ definitions:
       message:
         type: string
     required:
-    - message
+      - message
 security: []
 tags:
-- name: Member
-- name: User
-- name: Admin
-- name: Class
-- name: Transaction
-- name: Payment Methode
+  - name: Member
+  - name: User
+  - name: Admin
+  - name: Class
+  - name: ClassBooking

@@ -417,6 +417,43 @@
         }
       }
     },
+    "/member/join/history": {
+      "get": {
+        "summary": "Join History",
+        "tags": [
+          "Member"
+        ],
+        "operationId": "JoinHistory",
+        "deprecated": false,
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/JoinHistory1"
+            },
+            "examples": {
+              "application/json": {
+                "code": 400,
+                "message": "strconv.Atoi: parsing \"join/history\": invalid syntax",
+                "result": null
+              }
+            }
+          }
+        }
+      }
+    },
     "/admin/user/list": {
       "get": {
         "summary": "User List",
@@ -1163,13 +1200,13 @@
         }
       }
     },
-    "/transaction": {
+    "/class/order": {
       "post": {
-        "summary": "Add Transaction",
+        "summary": "Order",
         "tags": [
-          "Transaction"
+          "ClassBooking"
         ],
-        "operationId": "AddTransaction",
+        "operationId": "Order",
         "deprecated": false,
         "produces": [
           "application/json"
@@ -1181,160 +1218,15 @@
             "required": false,
             "default": "Bearer {token}",
             "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
-          }
-        }
-      },
-      "get": {
-        "summary": "Get All Transaction",
-        "tags": [
-          "Transaction"
-        ],
-        "operationId": "GetAllTransaction",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": false,
-            "default": "Bearer {token}",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
-          }
-        }
-      }
-    },
-    "/transaction/id": {
-      "get": {
-        "summary": "Get Transaction By Id",
-        "tags": [
-          "Transaction"
-        ],
-        "operationId": "GetTransactionById",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": false,
-            "default": "Bearer {token}",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
-          }
-        }
-      }
-    },
-    "/transaction/{id}": {
-      "put": {
-        "summary": "Update Transaction Status",
-        "tags": [
-          "Transaction"
-        ],
-        "operationId": "UpdateTransactionStatus",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "class id to update",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success Delete",
-            "schema": {
-              "$ref": "#/definitions/Updatetransaction1"
-            }
           },
-          "400": {
-            "description": "Bad Response",
-            "schema": {
-              "$ref": "#/definitions/Updatetransaction2"
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Transaction",
-        "tags": [
-          "Transaction"
-        ],
-        "operationId": "DeleteTransaction",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "class id to update",
+            "name": "Body",
+            "in": "body",
             "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success Delete",
+            "description": "",
             "schema": {
-              "$ref": "#/definitions/Deletetransaction1"
+              "$ref": "#/definitions/OrderRequest"
             }
-          },
-          "400": {
-            "description": "Bad Response",
-            "schema": {
-              "$ref": "#/definitions/Deletetransaction2"
-            }
-          }
-        }
-      }
-    },
-    "/payment/methode": {
-      "post": {
-        "summary": "Add Payment Methode",
-        "tags": [
-          "Payment Methode"
-        ],
-        "operationId": "AddPaymentMethode",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": false,
-            "default": "Bearer {token}",
-            "type": "string"
           }
         ],
         "responses": {
@@ -1343,133 +1235,75 @@
             "headers": {}
           }
         }
-      },
+      }
+    },
+    "/class/order/history": {
       "get": {
-        "summary": "Get All Payment",
+        "summary": "Order History",
         "tags": [
-          "Payment Methode"
+          "ClassBooking"
         ],
-        "operationId": "GetAllPayment",
+        "operationId": "OrderHistory",
         "deprecated": false,
         "produces": [
           "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": false,
-            "default": "Bearer {token}",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
-          }
-        }
-      }
-    },
-    "/payment/methode/id": {
-      "get": {
-        "summary": "Get Payment Methode By Id",
-        "tags": [
-          "Payment Methode"
-        ],
-        "operationId": "GetPaymentMethodeById",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": false,
-            "default": "Bearer {token}",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "headers": {}
-          }
-        }
-      }
-    },
-    "/payment/methode/{id}": {
-      "put": {
-        "summary": "Update Payment Methode",
-        "tags": [
-          "Payment Methode"
-        ],
-        "operationId": "UpdatePaymentMethode",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "class id to update",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success Delete",
-            "schema": {
-              "$ref": "#/definitions/UpdatepayMethode1"
-            }
-          },
-          "400": {
-            "description": "Bad Response",
-            "schema": {
-              "$ref": "#/definitions/UpdatepayMethode2"
-            }
-          }
-        }
+        ]
       },
-      "delete": {
-        "summary": "Delete Payment Methode",
-        "tags": [
-          "Payment Methode"
-        ],
-        "operationId": "DeletePaymentMethode",
-        "deprecated": false,
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "class id to update",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success Delete",
-            "schema": {
-              "$ref": "#/definitions/DeletepayMethode1"
-            }
-          },
-          "400": {
-            "description": "Bad Response",
-            "schema": {
-              "$ref": "#/definitions/DeletepayMethode2"
-            }
+      "parameters": [
+        {
+          "name": "Authorization",
+          "in": "header",
+          "required": false,
+          "default": "Bearer {token}",
+          "type": "string"
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "required": true,
+          "type": "integer",
+          "format": "int32",
+          "description": ""
+        },
+        {
+          "name": "pageSize",
+          "in": "query",
+          "required": true,
+          "type": "integer",
+          "format": "int32",
+          "description": ""
+        },
+        {
+          "name": "sortBy",
+          "in": "query",
+          "required": true,
+          "type": "string",
+          "description": ""
+        },
+        {
+          "name": "sortDesc",
+          "in": "query",
+          "required": true,
+          "type": "integer",
+          "format": "int32",
+          "description": "",
+          "responses": {
+            "401": {
+              "description": "Unauthorized",
+              "schema": {
+                "$ref": "#/definitions/OrderHistory1"
+              }
+            },
+            "examples": null,
+            "application/json": {
+              "code": 401,
+              "message": "token expired",
+              "result": null
+            },
+            "headers": {}
           }
         }
-      }
+      ]
     }
   },
   "definitions": {
@@ -1649,6 +1483,32 @@
         "email",
         "created_at",
         "updated_at"
+      ]
+    },
+    "JoinHistory1": {
+      "title": "JoinHistory1",
+      "example": {
+        "code": 400,
+        "message": "strconv.Atoi: parsing \"join/history\": invalid syntax",
+        "result": null
+      },
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
       ]
     },
     "MemberRequest": {
@@ -2848,58 +2708,6 @@
         }
       }
     },
-    "Deletetransaction1": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string",
-          "example": "Success Delete admin"
-        },
-        "rescode": {
-          "type": "number",
-          "example": 200
-        }
-      }
-    },
-    "Deletetransaction2": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string",
-          "example": "Bad Request"
-        },
-        "rescode": {
-          "type": "number",
-          "example": 400
-        }
-      }
-    },
-    "Updatetransaction1": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string",
-          "example": "Success Update Member"
-        },
-        "rescode": {
-          "type": "number",
-          "example": 200
-        }
-      }
-    },
-    "Updatetransaction2": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string",
-          "example": "Bad Request"
-        },
-        "rescode": {
-          "type": "number",
-          "example": 400
-        }
-      }
-    },
     "Result9": {
       "title": "Result9",
       "example": {
@@ -3268,57 +3076,62 @@
         "updated_at"
       ]
     },
-    "DeletepayMethode1": {
+    "OrderRequest": {
+      "title": "OrderRequest",
+      "example": {
+        "class_ids": [
+          1
+        ],
+        "payment_method": "BCA",
+        "note": "test"
+      },
       "type": "object",
       "properties": {
-        "message": {
-          "type": "string",
-          "example": "Success Delete Payment Methode"
+        "class_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
         },
-        "rescode": {
-          "type": "number",
-          "example": 200
+        "payment_method": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
         }
-      }
+      },
+      "required": [
+        "class_ids",
+        "payment_method",
+        "note"
+      ]
     },
-    "DeletepayMethode2": {
+    "OrderHistory1": {
+      "title": "OrderHistory1",
+      "example": {
+        "code": 401,
+        "message": "token expired",
+        "result": null
+      },
       "type": "object",
       "properties": {
-        "message": {
-          "type": "string",
-          "example": "Bad Request"
+        "code": {
+          "type": "integer",
+          "format": "int32"
         },
-        "rescode": {
-          "type": "number",
-          "example": 400
-        }
-      }
-    },
-    "UpdatepayMethode1": {
-      "type": "object",
-      "properties": {
         "message": {
-          "type": "string",
-          "example": "Success Update Payment Methode"
+          "type": "string"
         },
-        "rescode": {
-          "type": "number",
-          "example": 200
+        "result": {
+          "type": "string"
         }
-      }
-    },
-    "UpdatepayMethode2": {
-      "type": "object",
-      "properties": {
-        "message": {
-          "type": "string",
-          "example": "Bad Request"
-        },
-        "rescode": {
-          "type": "number",
-          "example": 400
-        }
-      }
+      },
+      "required": [
+        "code",
+        "message",
+        "result"
+      ]
     },
     "GetClass2": {
       "title": "GetClass2",
@@ -3351,10 +3164,7 @@
       "name": "Class"
     },
     {
-      "name": "Transaction"
-    },
-    {
-      "name": "Payment Methode"
+      "name": "ClassBooking"
     }
   ]
 }
